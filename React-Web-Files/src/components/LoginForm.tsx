@@ -47,9 +47,9 @@ function LoginForm() {
   return (
     <>
       <Row>
-        <Col className="my-5 py-5" />
+        <Col className="mt-5" />
       </Row>
-      <MDBContainer fluid bgColor={themeContext?.theme}>
+      <MDBContainer fluid bgColor={themeContext?.theme} className="mb-5">
         <MDBRow className="d-flex justify-content-center align-items-center h-100">
           <MDBCol col="12">
             <MDBCard
@@ -67,6 +67,7 @@ function LoginForm() {
                     <Form.Label>Username</Form.Label>
                     <Form.Control
                       id="username"
+                      required
                       type="text"
                       placeholder="Enter email"
                       onChange={(e) => setUsername(e.target.value)}
@@ -78,6 +79,7 @@ function LoginForm() {
                       <Col>
                         <Form.Control
                           id="password"
+                          required
                           type={showPass ? "text" : "password"}
                           placeholder="Password"
                           onChange={(e) => setPassword(e.target.value)}

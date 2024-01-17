@@ -81,6 +81,7 @@ function SignupForm() {
                     <Form.Label>Full Name</Form.Label>
                     <Form.Control
                       id="username"
+                      required
                       type="text"
                       placeholder="Enter name"
                       onChange={(e) => setName(e.target.value)}
@@ -90,6 +91,7 @@ function SignupForm() {
                     <Form.Label>Date of Birth</Form.Label>
                     <Form.Control
                       type="date"
+                      required
                       name="dob"
                       placeholder="Date of Birth"
                       onChange={(e) => setDOB(e.target.value)}
@@ -99,6 +101,7 @@ function SignupForm() {
                     <Form.Label>Username</Form.Label>
                     <Form.Control
                       id="username"
+                      required
                       type="text"
                       placeholder="Enter username"
                       onChange={(e) => setUsername(e.target.value)}
@@ -108,6 +111,7 @@ function SignupForm() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                       id="password"
+                      required
                       type={showPass ? "text" : "password"}
                       placeholder="Password"
                       onChange={(e) => setPassword(e.target.value)}
@@ -117,6 +121,7 @@ function SignupForm() {
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control
                       id="password"
+                      required
                       type={showPass ? "text" : "password"}
                       placeholder="Confirm Password"
                       onChange={(e) => setConfirmPass(e.target.value)}

@@ -1,18 +1,41 @@
-import { Container } from "react-bootstrap";
+import { Container, ThemeProvider } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignUpFrom";
-import { INDEX_PATH, LOGIN_PATH, SIGNUP_PATH } from "./constants/paths";
+import {
+  ABOUT_PATH,
+  CONTACTS_PATH,
+  DASHBOARD_PATH,
+  INDEX_PATH,
+  LOGIN_PATH,
+  SIGNUP_PATH,
+} from "./constants/paths";
+import Home from "./pages/Home";
+import FooterComp from "./components/Footer";
+import NavBar from "./components/Navbar";
+// import { ThemeContext } from "./components/ThemeProvider";
+// import { useContext } from "react";
+import Contacts from "./pages/Contacts";
+import About from "./pages/About";
+import Dash from "./pages/Dashboard";
 function App() {
+  // const themeContext = useContext(ThemeContext);
   return (
     <>
-      <Container>
-        <Routes>
-          <Route path={INDEX_PATH} element={<LoginForm/>}/>
-          <Route path={SIGNUP_PATH} element={<SignupForm />} />
-          <Route path={LOGIN_PATH} element={<LoginForm />} />
-        </Routes>
-      </Container>
+      <ThemeProvider>
+        <NavBar />
+        <Container>
+          <Routes>
+            <Route path={INDEX_PATH} element={<Home />} />
+            <Route path={SIGNUP_PATH} element={<SignupForm />} />
+            <Route path={LOGIN_PATH} element={<LoginForm />} />
+            <Route path={CONTACTS_PATH} element={<Contacts />} />
+            <Route path={ABOUT_PATH} element={<About />} />
+            <Route path={DASHBOARD_PATH} element={<Dash />} />
+          </Routes>
+        </Container>
+        <FooterComp />
+      </ThemeProvider>
     </>
   );
 }
