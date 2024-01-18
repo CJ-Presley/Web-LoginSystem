@@ -1,8 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import Latte from "../assets/Menu/Latte_art_3.jpg";
 import plus from "../assets/icons8-plus-48.png";
+
 
 interface MenuCardProps {
   item: string;
