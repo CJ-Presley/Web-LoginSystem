@@ -10,17 +10,20 @@ import {
   LOGIN_PATH,
   SIGNUP_PATH,
   NOT_FOUND_PATH,
+  MENU_PATH,
+  BOOKING_PATH,
 } from "./constants/paths";
 import Home from "./pages/Home";
 import FooterComp from "./components/Footer";
 import NavBar from "./components/Navbar";
-// import { ThemeContext } from "./components/ThemeProvider";
-// import { useContext } from "react";
 import Contacts from "./pages/Contacts";
 import About from "./pages/About";
 import Dash from "./pages/Dashboard";
-import Error from "./pages/NotFound"
-function App() {
+import Error from "./pages/NotFound";
+import Menu from "./pages/Menu";
+import Bookings from "./pages/Bookings";
+
+export function App() {
   // const themeContext = useContext(ThemeContext);
   return (
     <>
@@ -35,6 +38,8 @@ function App() {
             <Route path={ABOUT_PATH} element={<About />} />
             <Route path={DASHBOARD_PATH} element={<Dash />} />
             <Route path={NOT_FOUND_PATH} element={<Error />} />
+            <Route path={MENU_PATH} element={<Menu />} />
+            <Route path={BOOKING_PATH} element={<Bookings />} />
           </Routes>
         </Container>
         <FooterComp />
@@ -42,5 +47,4 @@ function App() {
     </>
   );
 }
-
 export default App;

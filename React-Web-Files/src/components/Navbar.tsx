@@ -22,15 +22,27 @@ function NavBar() {
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/menu">Menu</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
+            <Nav.Link href="/bookings">Bookings</Nav.Link>
             <Nav.Link href="/contacts">Contacts</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="/dash" className="fw-bold" disabled>Dashboard</Nav.Link>
-            <NavDropdown title="Accounts" id="basic-nav-dropdown" className="fw-bold">
-              <NavDropdown.Item href="/login" >Login</NavDropdown.Item>
+            <Nav.Link href="/dash" className="fw-bold" disabled>
+              Dashboard
+            </Nav.Link>
+            <NavDropdown
+              title="Accounts"
+              id="basic-nav-dropdown"
+              className="fw-bold"
+            >
+              <NavDropdown.Item href="/login">Login</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/" className="text-danger fw-bold" disabled>
+              <NavDropdown.Item
+                href="/"
+                className="text-danger fw-bold"
+                disabled
+              >
                 Sign Out
               </NavDropdown.Item>
             </NavDropdown>

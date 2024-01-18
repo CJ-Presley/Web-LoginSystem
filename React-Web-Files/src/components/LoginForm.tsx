@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { ThemeContext } from "./ThemeProvider";
 import {
   MDBContainer,
@@ -10,6 +10,9 @@ import {
 import { Button, Col, Form, Row } from "react-bootstrap";
 import axios from "axios";
 function LoginForm() {
+  useEffect(() => {
+    document.title = "Bean & Brew | Login";
+  });
   const themeContext = useContext(ThemeContext);
   const [showPass, setShowPass] = useState(false);
   const [username, setUsername] = useState("");
@@ -42,7 +45,6 @@ function LoginForm() {
         }
       }
   };
-
 
   return (
     <>
