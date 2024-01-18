@@ -1,5 +1,5 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
-import Logo from "../assets/Space6.png";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import Logo from "../assets/B+BLogo.png";
 // import { useContext } from "react";
 // import { ThemeContext } from "./ThemeProvider";
 // import Icon from "../assets/themeIcon.png";
@@ -14,8 +14,8 @@ function NavBar() {
           <Navbar.Brand href="/">
             <img
               src={Logo}
-              width="30"
-              height="30"
+              width="80"
+              height="80"
               className="d-inline-block align-top rounded"
               alt="Logo"
             />
@@ -26,8 +26,14 @@ function NavBar() {
             <Nav.Link href="/contacts">Contacts</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="/dash">Dashboard</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/dash" className="fw-bold" disabled>Dashboard</Nav.Link>
+            <NavDropdown title="Accounts" id="basic-nav-dropdown" className="fw-bold">
+              <NavDropdown.Item href="/login" >Login</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/" className="text-danger fw-bold" disabled>
+                Sign Out
+              </NavDropdown.Item>
+            </NavDropdown>
 
             {/* <Button
               variant="light"

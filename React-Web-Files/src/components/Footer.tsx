@@ -17,8 +17,8 @@ function FooterComp() {
         <MDBContainer className="p-4">
           <MDBRow>
             <MDBCol lg="6" md="12" className="mb-4 mb-md-0">
-              <h5 className="text-uppercase">My Portfolio</h5>
-              <p>Lorem Ipsum</p>
+              <h5 className="text-uppercase">Our Story</h5>
+              <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
             </MDBCol>
 
             <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
@@ -30,7 +30,7 @@ function FooterComp() {
                     href="https://github.com/CypherO2"
                     className="text-secondary"
                   >
-                    Github - CypherO2
+                    Instagram
                   </a>
                 </li>
                 <li>
@@ -38,7 +38,7 @@ function FooterComp() {
                     href="https://www.youtube.com/@Nox-Noctiflora"
                     className="text-secondary"
                   >
-                    Youtube - Nox Noctiflora
+                    Twitter
                   </a>
                 </li>
                 <li>
@@ -46,7 +46,7 @@ function FooterComp() {
                     href="https://discord.gg/KJmZXACYjW"
                     className="text-secondary"
                   >
-                    Discord Server - cassi06
+                    Discord
                   </a>
                 </li>
                 <li>
@@ -54,7 +54,7 @@ function FooterComp() {
                     href="https://uk.linkedin.com/in/charles-presley-b75399244"
                     className="text-secondary"
                   >
-                    LinkedIn - Charles Presley
+                    LinkedIn
                   </a>
                 </li>
               </ul>
@@ -105,9 +105,9 @@ function FooterComp() {
           className="text-center p-3 text-secondary"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
         >
-          © 2023 Copyright:{" "}
-          <a className="text-secondary" href="#temp-link">
-            Charles J Presley
+          © 2024 Copyright:{" "}
+          <a className="text-secondary" href="charlespresley2006@outlook.com">
+            C J Presley
           </a>
         </div>
       </MDBFooter>
