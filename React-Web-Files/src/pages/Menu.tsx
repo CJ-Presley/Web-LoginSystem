@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import MenuCard from "../components/MenuCards";
 import axios from "axios";
 import { MENU_URL } from "../constants/APIconstants";
@@ -10,6 +10,7 @@ function Menu() {
   useEffect(() => {
     const getMenu = async () => {
       const response = await axios.get(MENU_URL);
+      console.log(response?.data);
     };
     getMenu();
   }, []);
