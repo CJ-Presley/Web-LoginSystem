@@ -82,13 +82,26 @@ function SignupForm() {
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="" controlId="formBasicName">
                     <Form.Label>Full Name</Form.Label>
-                    <Form.Control
-                      id="username"
-                      required
-                      type="text"
-                      placeholder="Enter name"
-                      onChange={(e) => setName(e.target.value)}
-                    />
+                    <Row>
+                      <Col>
+                        <Form.Control
+                          id="username"
+                          required
+                          type="text"
+                          placeholder="Enter forename"
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                      </Col>
+                      <Col>
+                        <Form.Control
+                          id="username"
+                          required
+                          type="text"
+                          placeholder="Enter surname"
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                      </Col>
+                    </Row>
                   </Form.Group>
                   <Form.Group controlId="dob">
                     <Form.Label>Date of Birth</Form.Label>
@@ -112,23 +125,26 @@ function SignupForm() {
                   </Form.Group>
                   <Form.Group className="" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      id="password"
-                      required
-                      type={showPass ? "text" : "password"}
-                      placeholder="Password"
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control
-                      id="password"
-                      required
-                      type={showPass ? "text" : "password"}
-                      placeholder="Confirm Password"
-                      onChange={(e) => setConfirmPass(e.target.value)}
-                    />
+                    <Row>
+                      <Col>
+                        <Form.Control
+                          id="password"
+                          required
+                          type={showPass ? "text" : "password"}
+                          placeholder="Password"
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </Col>
+                      <Col>
+                        <Form.Control
+                          id="password"
+                          required
+                          type={showPass ? "text" : "password"}
+                          placeholder="Confirm Password"
+                          onChange={(e) => setConfirmPass(e.target.value)}
+                        />
+                      </Col>
+                    </Row>
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check

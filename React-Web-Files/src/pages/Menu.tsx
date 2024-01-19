@@ -10,7 +10,7 @@ function Menu() {
   useEffect(() => {
     const getMenu = async () => {
       const response = await axios.get(MENU_URL);
-      console.log(response?.data);
+      console.log(response?.data["menuItems"]);
     };
     getMenu();
   }, []);
