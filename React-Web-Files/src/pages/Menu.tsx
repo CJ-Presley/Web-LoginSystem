@@ -7,9 +7,13 @@ function Menu() {
   useEffect(() => {
     document.title = "Bean & Brew | Menu";
   });
-  const getMenu = async () => {
-    await axios.get(MENU_URL);
-  };
+  useEffect(() => {
+    const getMenu = async () => {
+      const response = await axios.get(MENU_URL);
+    };
+    getMenu();
+  }, []);
+
   return (
     <>
       <MenuCard

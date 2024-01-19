@@ -2,10 +2,12 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import cryptography
 from bcrypt import checkpw, gensalt, hashpw
-# import LoginFunctions as LF
+import LoginFunctions as LF
 import sqlite3
+from dateutil.parser import parse
 from sqlite3 import Error
 import re
+import datetime
 
 # app = Flask function - name as variable fed into function
 app = Flask(__name__)
@@ -13,38 +15,32 @@ app = Flask(__name__)
 # CORS function from flask_cors : (see line 10), resource = {regex"anywhere/thing" : {(data can be sent from anywhere)}}
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-def PasswordCheck(password):
-    passwordPattern = r"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9@#$%^_&-+=]+){5,16}$"
-    if re.match(passwordPattern, password) != None:
-        return True
-    else:
-        return False
-    
+
+# login
 @app.route("/login", methods=["POST"])
-def login_details():
+def LoginDetails():
     logins = {}
     print("Request Recieved")
-    with sqlite3.connect(
-        r"\\scc-fs-hf4\Students$\stu2223\S301389\Year2 Py\Project\LoginSystem\Database Files\LoginSignup.db"
-    ) as conn:
+    with sqlite3.connect(r"Database Files/Bean&Brew-Account2.db") as conn:
         print("Connection Established")
         username = request.json.get("username")
-        if len(username) < 5:
-            return jsonify({"success": False, "message": "Username is not long enough"})
-        elif len(username) > 16:
-            return jsonify({"success": False, "message": "Username is to long"})
-        elif not username.isalnum():
-            return jsonify({"success": False, "message": "Username is Not Alphanumeric"})
-        # print(username)
+        if not LF.UsernameCheck(username):
+            return jsonify(
+                {
+                    "success": False,
+                    "message": "Username must be 5 - 16 characters longs and alphanumeric",
+                }
+            )
         password = request.json.get("password")
-        if len(password) < 5:
-            return jsonify({"success": False, "message": "Password Not Long Enough"})
-        elif len(password) > 16:
-            return jsonify({"success": False, "message":"Password to Long"})
-        if PasswordCheck(password):
+        if LF.PasswordCheck(password):
             password = password.encode("utf-8")
         else:
-            return jsonify({"success": False, "message": "Password Must Contain:\n- 1 Uppercase Character\n- 1 Lowercase Character\n- 1 Number"})
+            return jsonify(
+                {
+                    "success": False,
+                    "message": "Password must be between 5 and 16 characters and have atleast 1 uppercase character, 1 lowercase character and 1 number",
+                }
+            )
         try:
             cu = conn.cursor()
             print("Cursor Created")
@@ -54,68 +50,113 @@ def login_details():
             print(results)
             for i in results:
                 logins[i[3]] = i[4]
-                print(logins)
-                print(logins[username])
+                # print(logins)
+                # print(logins[username])
             if checkpw(password, logins[username]):
-                return jsonify({"success":True, "message": "Login Successful", "Festive Message": "Blessed Yuletide"})
+                return jsonify(
+                    {
+                        "success": True,
+                        "message": "Login Successful",
+                        "Festive Message": "Blessed Yuletide",
+                    }
+                )
             else:
-                return jsonify({"success":False, "message": "Incorrect Login Details"})
+                return jsonify({"success": False, "message": "Incorrect Login Details"})
         except Exception as e:
             print(e)
             return jsonify({"success": False, "message": "Incorrect Login Details"})
 
+
+# sign up
 @app.route("/signup", methods=["POST"])
-def signup_details():
+def SignupDetails():
     print("Request Recieved")
-    with sqlite3.connect(
-        r"\\scc-fs-hf4\Students$\stu2223\S301389\Year2 Py\Project\LoginSystem\Database Files\LoginSignup.db"
-    ) as conn:
+    with sqlite3.connect(r"Database Files/Bean&Brew-Account2.db") as conn:
         print("Connection Established")
-        name = request.json.get("name")
+        forename = request.json.get("forename")
+        surname = request.json.get("surname")
         dob = request.json.get("dob")
+        if not LF.DateCheck(dob):
+            return jsonify(
+                {
+                    "success": False,
+                    "message": "Value is either not a date or is in the incorrect format (DD/MM/YYYY)",
+                }
+            )
         username = request.json.get("username")
-        if len(username) < 5:
-            return jsonify({"success": False, "message": "Username is not long enough"})
-        elif len(username) > 16:
-            return jsonify({"success": False, "message": "Username is to long"})
-        elif not username.isalnum():
-            return jsonify({"success": False, "message": "Username is Not Alphanumeric"})
+        if LF.UsernameCheck(username):
+            return jsonify(
+                {
+                    "success": False,
+                    "message": "Username must be 5 - 16 characters longs and alphanumeric",
+                }
+            )
         count = """Select Count(Username) From users Where Username = ?"""
         cu = conn.cursor()
         print("Cursor Created")
-        cu.execute(count,(username,))
+        cu.execute(count, (username,))
         results = cu.fetchall()
         for i in results:
             if int(i[0]) > 1:
                 return jsonify({"success": False, "message": "Username is Taken"})
         password = request.json.get("password")
-        if len(password) < 5:
-            return jsonify({"success": False, "message": "Password Not Long Enough"})
-        elif len(password) > 16:
-            return jsonify({"success": False, "message":"Password to Long"})
-        if PasswordCheck(password):
+        if LF.PasswordCheck(password):
             password = password.encode("utf-8")
         else:
-            return jsonify({"success": False, "message": "Password Must Contain:\n- 1 Uppercase Character\n- 1 Lowercase Character\n- 1 Number"})
-        # confirmPass = request.json.get("confirmPass").encode("utf-8")
-        # if password == confirmPass:
+            return jsonify(
+                {
+                    "success": False,
+                    "message": "Password must be between 5 and 16 characters and have atleast 1 uppercase character, 1 lowercase character and 1 number",
+                }
+            )
         salt = gensalt()
         hashedPassword = hashpw(password, salt)
         try:
-            
-            statement = """INSERT INTO users(Name, DOB, Username, Password) VALUES(?,?,?,?)"""
-            cu.execute(statement,(name, dob, username, hashedPassword))
+            statement = """INSERT INTO users(Forename, Surname, Username, DOB, Password) VALUES(?,?,?,?,?)"""
+            cu.execute(statement, (forename, surname, username, dob, hashedPassword))
             conn.commit()
-            return jsonify({"success": True, "message": "Signup Successful", "Festive Message": "Blessed Yuletide"})
+            return jsonify(
+                {
+                    "success": True,
+                    "message": "Signup Successful",
+                    "Festive Message": "Blessed Yuletide",
+                }
+            )
         except:
             print("Value could not be added to DB")
-            return jsonify({"success": False, "message": "Internal Server Error"}),500
+            return jsonify({"success": False, "message": "Internal Server Error"}), 500
         # else:
         #     return jsonify({"success": False, "message": "Passwords Do NOT Match"})
 
 
+@app.route("/menu", methods=["GET"])
+def MenuDetails():
+    with sqlite3.connect(r"Database Files/Bean&Brew-Account2.db") as conn:
+        print("Connection Established")
+        query = """SELECT * FROM Menu"""
+        cu = conn.cursor()
+        cu.execute(query)
+        menuItems = cu.fetchall()
+        # print(menuItems[0])
+        menuItemsList = []
+        for i in menuItems:
+            print(i[1:])
+            item = i[1]
+            type = i[2]
+            desc = i[3]
+            price = i[4]
+            url = i[5]
+            json = {
+                "item": item,
+                "type": type,
+                "desc": desc,
+                "price": price,
+                "url": url,
+            }
+            menuItemsList.append(json)
+        return jsonify({menuItemsList})
 
 
 if __name__ == "__main__":
     app.run()
-    #ssl_context="adhoc"
+    # ssl_context="adhoc"
