@@ -154,7 +154,7 @@ def MenuDetails():
                 "url": url,
             }
             menuItemsList.append(json)
-        return jsonify({menuItemsList})
+        return jsonify({"menuItems":menuItemsList})
 
 
 if __name__ == "__main__":
