@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import Logo from "../assets/B+BLogo.png";
+import Logo from "../assets/Logo2.png";
 // import { useContext } from "react";
 // import { ThemeContext } from "./ThemeProvider";
 // import Icon from "../assets/themeIcon.png";
@@ -14,8 +14,8 @@ function NavBar() {
           <Navbar.Brand href="/">
             <img
               src={Logo}
-              width="80"
-              height="80"
+              width="200"
+              height="40"
               className="d-inline-block align-top rounded"
               alt="Logo"
             />
