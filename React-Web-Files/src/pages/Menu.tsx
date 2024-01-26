@@ -34,6 +34,8 @@ function Menu() {
 
   return (
     <>
+      <h1 className="my-3 fw-bold text-center">Menu</h1>
+      <Col className="border-bottom my-3"></Col>
       <div className="mx-5 px-5">
         <Col className="mx-5">
           <Row fluid>{menuCards}</Row>

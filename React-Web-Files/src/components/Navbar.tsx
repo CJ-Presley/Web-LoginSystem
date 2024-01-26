@@ -37,6 +37,7 @@ function NavBar() {
               className="fw-bold"
             >
               <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+              <NavDropdown.Item href="/checkout">Checkout</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item
                 href="/"
