@@ -1,7 +1,7 @@
 import { Card, Button, Col, Row } from "react-bootstrap";
-import Img1 from "../assets/DuK.png";
-import Img2 from "../assets/hARRhARR.png";
-import Img3 from "../assets/Latte_art_3.jpg";
+import Img3 from "../assets/bake.jpg";
+import Img2 from "../assets/cafe.png";
+import Img1 from "../assets/Latte_art_3.jpg";
 
 function BookingCards() {
   return (

@@ -1,9 +1,10 @@
 import { useEffect } from "react";
+import HomeCar from "../components/CarouselHome"
 
 function Home() {
     useEffect(() => {
       document.title = "Bean & Brew | Home";
     });
-  return <></>;
+  return <><HomeCar/></>;
 }
 export default Home;

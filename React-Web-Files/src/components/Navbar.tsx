@@ -3,6 +3,7 @@ import Logo from "../assets/Logo2.png";
 // import { useContext } from "react";
 // import { ThemeContext } from "./ThemeProvider";
 // import Icon from "../assets/themeIcon.png";
+import { WirelessCheckout }  from "@carbon/react/icons"
 
 function NavBar() {
   // const themeContext = useContext(ThemeContext);
@@ -37,7 +38,7 @@ function NavBar() {
               className="fw-bold"
             >
               <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-              <NavDropdown.Item href="/checkout">Checkout</NavDropdown.Item>
+              <NavDropdown.Item href="/checkout"><WirelessCheckout/>{" "}Checkout</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item
                 href="/"
