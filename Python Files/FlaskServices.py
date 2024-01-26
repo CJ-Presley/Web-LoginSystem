@@ -131,7 +131,7 @@ def SignupDetails():
 
 @app.route("/menu", methods=["GET"])
 def MenuDetails():
-    with sqlite3.connect(r"Database Files/Bean&Brew-Account2.db") as conn:
+    with sqlite3.connect(r"Web-LoginSystem/Database Files/Bean&Brew-Account2.db") as conn:
         print("Connection Established")
         query = """SELECT * FROM Menu"""
         cu = conn.cursor()
