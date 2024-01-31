@@ -6,7 +6,7 @@ import Img1 from "../assets/Latte_art_3.jpg";
 function BookingCards() {
   return (
     <>
-      <Row className="py-3">
+      <Row className="py-5">
         <Col className="mx-5">
           {/* <Card style={{ width: "20rem" }} bg="dark">
             <Card.Img variant="top" src={Img1} height="200" width="80" />
@@ -27,7 +27,7 @@ function BookingCards() {
               <Card.Text className="text-light">
                 Order Food/ Drink before you arrive
               </Card.Text>
-              <Button className="mb-4 mt-5" variant="primary">
+              <Button href="/preorder" className="mb-4 mt-5" variant="primary">
                 Click Here
               </Button>
             </Card.Body>
@@ -43,7 +43,7 @@ function BookingCards() {
               <Card.Text className="text-light">
                 Reserve a table at one of our locations
               </Card.Text>
-              <Button className="mb-4 mt-5" variant="primary">
+              <Button href="/reservations" className="mb-4 mt-5" variant="primary">
                 Click Here
               </Button>
             </Card.Body>
@@ -59,7 +59,7 @@ function BookingCards() {
               <Card.Text className="text-light">
                 Book a cooking class.
               </Card.Text>
-              <Button className="mb-4 mt-5" variant="primary">
+              <Button href="/classes" className="mb-4 mt-5" variant="primary">
                 Click Here
               </Button>
             </Card.Body>

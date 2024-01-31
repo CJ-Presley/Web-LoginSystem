@@ -21,7 +21,7 @@ import About from "./pages/About";
 import Dash from "./pages/Dashboard";
 import Error from "./pages/NotFound";
 import Menu from "./pages/Menu";
-import Bookings from "./pages/Bookings";
+import Bookings from "./pages/BookingsPage";
 
 export function App() {
   // const themeContext = useContext(ThemeContext);
