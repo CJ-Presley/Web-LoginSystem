@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MenuCard, { MenuCardProps } from "../components/MenuCards";
 import axios from "axios";
 import { MENU_URL } from "../constants/APIconstants";
-import { Button, Col, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { ArrowRight } from "@carbon/react/icons";
 
 function Menu() {
@@ -35,20 +35,22 @@ function Menu() {
 
   return (
     <>
-      <h1 className="my-3 fw-bold text-center">Menu</h1>
-      <Col className="border-bottom my-3"></Col>
-      <div className="mx-5 px-5">
-        <Col className="mx-5">
-          <Row fluid>{menuCards}</Row>
-        </Col>
-      </div>
-      <Row>
-        <div className="pr-5 mr-5 pb-3">
-          <Button className="px-3 fw-bold" variant="outline-success">
-            Next <ArrowRight className="fw-bold" />
-          </Button>
+      <Container>
+        <h1 className="my-3 fw-bold text-center">Menu</h1>
+        <Col className="border-bottom my-3"></Col>
+        <div className="mx-5 px-5">
+          <Col className="mx-5">
+            <Row fluid>{menuCards}</Row>
+          </Col>
         </div>
-      </Row>
+        <Container>
+          <Row className="pb-4">
+            <Button className="fw-bold" variant="success">
+              Next <ArrowRight className="fw-bold" />
+            </Button>
+          </Row>
+        </Container>
+      </Container>
     </>
   );
 }

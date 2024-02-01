@@ -7,7 +7,6 @@ const DASHBOARD_PATH = "/dash";
 const MENU_PATH = "/menu";
 const BOOKING_PATH = "/bookings";
 const NOT_FOUND_PATH = "/*";
-const PREORDER_PATH = "/preorder";
 const TABLE_PATH = "/reservations";
 const CLASS_PATH = "/classes";
 
@@ -21,7 +20,6 @@ export {
   NOT_FOUND_PATH,
   MENU_PATH,
   BOOKING_PATH,
-  PREORDER_PATH,
   TABLE_PATH,
   CLASS_PATH,
 };
