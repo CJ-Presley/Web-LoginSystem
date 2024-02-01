@@ -1,9 +1,14 @@
 import { useEffect } from "react";
+import { Container } from "react-bootstrap";
 
 function About() {
   useEffect(() => {
     document.title = "Bean & Brew | About";
   });
-  return <></>;
+  return (
+    <>
+      <Container></Container>
+    </>
+  );
 }
 export default About;

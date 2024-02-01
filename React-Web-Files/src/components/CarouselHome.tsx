@@ -1,7 +1,7 @@
 import { Carousel } from "react-bootstrap";
 import Img1 from "../assets/c2.png";
 import Img2 from "../assets/ci1.png";
-import Img3 from "../assets/b+b.jpg"
+import Img3 from "../assets/b+b.jpg";
 
 function HomeCar() {
   return (

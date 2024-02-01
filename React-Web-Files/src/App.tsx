@@ -25,7 +25,6 @@ import Dash from "./pages/Dashboard";
 import Error from "./pages/NotFound";
 import Menu from "./pages/Menu";
 import Bookings from "./pages/BookingsPage";
-import PreOrder from "./pages/Preorder";
 
 export function App() {
   // const themeContext = useContext(ThemeContext);
@@ -33,22 +32,19 @@ export function App() {
     <>
       <ThemeProvider>
         <NavBar />
-        <Container>
-          <Routes>
-            <Route path={INDEX_PATH} element={<Home />} />
-            <Route path={SIGNUP_PATH} element={<SignupForm />} />
-            <Route path={LOGIN_PATH} element={<LoginForm />} />
-            <Route path={CONTACTS_PATH} element={<Contacts />} />
-            <Route path={ABOUT_PATH} element={<About />} />
-            <Route path={DASHBOARD_PATH} element={<Dash />} />
-            <Route path={NOT_FOUND_PATH} element={<Error />} />
-            <Route path={MENU_PATH} element={<Menu />} />
-            <Route path={BOOKING_PATH} element={<Bookings />} />
-            <Route path={PREORDER_PATH} element={<PreOrder />} />
-            <Route path={TABLE_PATH} element={<Bookings />} />
-            <Route path={CLASS_PATH} element={<Bookings />} />
-          </Routes>
-        </Container>
+        <Routes>
+          <Route path={INDEX_PATH} element={<Home />} />
+          <Route path={SIGNUP_PATH} element={<SignupForm />} />
+          <Route path={LOGIN_PATH} element={<LoginForm />} />
+          <Route path={CONTACTS_PATH} element={<Contacts />} />
+          <Route path={ABOUT_PATH} element={<About />} />
+          <Route path={DASHBOARD_PATH} element={<Dash />} />
+          <Route path={NOT_FOUND_PATH} element={<Error />} />
+          <Route path={MENU_PATH} element={<Menu />} />
+          <Route path={BOOKING_PATH} element={<Bookings />} />
+          <Route path={TABLE_PATH} element={<Bookings />} />
+          <Route path={CLASS_PATH} element={<Bookings />} />
+        </Routes>
         <FooterComp />
       </ThemeProvider>
     </>
