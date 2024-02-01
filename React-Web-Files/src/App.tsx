@@ -14,7 +14,6 @@ import {
   BOOKING_PATH,
   CLASS_PATH,
   TABLE_PATH,
-  PREORDER_PATH,
 } from "./constants/paths";
 import Home from "./pages/Home";
 import FooterComp from "./components/Footer";
