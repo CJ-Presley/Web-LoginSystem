@@ -10,7 +10,7 @@ function NavBar() {
 
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark" className="fw-bold sticky-top">
+      <Navbar bg="dark" data-bs-theme="dark" className="fw-bold sticky-top fluid">
         <Container>
           <Navbar.Brand href="/">
             <img
@@ -22,35 +22,35 @@ function NavBar() {
             />
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link className="text-light" href="/">
+            <Nav.Link className="" href="/">
               Home
             </Nav.Link>
-            <Nav.Link className="text-light" href="/menu">
+            <Nav.Link className="" href="/menu">
               Menu
             </Nav.Link>
-            <Nav.Link className="text-light" href="/about">
+            <Nav.Link className="" href="/about">
               About
             </Nav.Link>
-            <Nav.Link className="text-light" href="/bookings">
+            <Nav.Link className="" href="/bookings">
               Bookings
             </Nav.Link>
-            <Nav.Link className="text-light" href="/contacts">
+            <Nav.Link className="" href="/contacts">
               Contacts
             </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="/dash" className="text-light fw-bold" disabled>
+            <Nav.Link href="/dash" className=" fw-bold" disabled>
               Dashboard
             </Nav.Link>
             <NavDropdown
-              title="Accounts"
+              title="More Options"
               id="basic-nav-dropdown"
-              className="fw-bold"
+              className="fw-bold "
             >
-              <NavDropdown.Item className="text-light" href="/login">
+              <NavDropdown.Item className="" href="/login">
                 Login
               </NavDropdown.Item>
-              <NavDropdown.Item className="text-light" href="/checkout">
+              <NavDropdown.Item className="" href="/checkout">
                 <WirelessCheckout /> Checkout
               </NavDropdown.Item>
               <NavDropdown.Divider />

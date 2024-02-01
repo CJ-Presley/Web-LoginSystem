@@ -5,7 +5,7 @@ import { MENU_URL } from "../constants/APIconstants";
 import { Button, Col, Row } from "react-bootstrap";
 import { ArrowRight } from "@carbon/react/icons";
 
-function Menu() {
+function PreOrder() {
   const [menuCards, setMenuCards] = useState([]);
   useEffect(() => {
     document.title = "Bean & Brew | Menu";
@@ -35,7 +35,7 @@ function Menu() {
 
   return (
     <>
-      <h1 className="my-3 fw-bold text-center">Menu</h1>
+      <h1 className="my-3 fw-bold text-center">Pre-order Menu</h1>
       <Col className="border-bottom my-3"></Col>
       <div className="mx-5 px-5">
         <Col className="mx-5">
@@ -43,25 +43,15 @@ function Menu() {
         </Col>
       </div>
       <Row>
-        <div className="pr-5 mr-5 pb-3">
-          <Button className="px-3 fw-bold" variant="outline-success">
-            Next <ArrowRight className="fw-bold" />
-          </Button>
-        </div>
+        <Col></Col>
+        <Col></Col>
+        <Col className="pb-3">
+            <Button className="px-3 fw-bold" variant="outline-success">
+              Next{" "}<ArrowRight className="fw-bold pr-5"/>
+            </Button>
+        </Col>
       </Row>
     </>
   );
 }
-export default Menu;
-
-/*
-  const buttonTags = buttons.map((button) => (
-    <button
-      type="button"
-      key={button}
-      onClick={() => handleButtonClick(button)}
-    >
-      {button}
-    </button>
-  ));
-*/
+export default PreOrder;

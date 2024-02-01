@@ -12,6 +12,9 @@ import {
   NOT_FOUND_PATH,
   MENU_PATH,
   BOOKING_PATH,
+  CLASS_PATH,
+  TABLE_PATH,
+  PREORDER_PATH,
 } from "./constants/paths";
 import Home from "./pages/Home";
 import FooterComp from "./components/Footer";
@@ -22,6 +25,7 @@ import Dash from "./pages/Dashboard";
 import Error from "./pages/NotFound";
 import Menu from "./pages/Menu";
 import Bookings from "./pages/BookingsPage";
+import PreOrder from "./pages/Preorder";
 
 export function App() {
   // const themeContext = useContext(ThemeContext);
@@ -40,6 +44,9 @@ export function App() {
             <Route path={NOT_FOUND_PATH} element={<Error />} />
             <Route path={MENU_PATH} element={<Menu />} />
             <Route path={BOOKING_PATH} element={<Bookings />} />
+            <Route path={PREORDER_PATH} element={<PreOrder />} />
+            <Route path={TABLE_PATH} element={<Bookings />} />
+            <Route path={CLASS_PATH} element={<Bookings />} />
           </Routes>
         </Container>
         <FooterComp />

@@ -2,8 +2,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import plus from "../assets/icons8-plus-48.png";
-import { Row, Col } from "react-bootstrap";
-// import { IconButton } from "@carbon/react";
+import { Row, Col, Container } from "react-bootstrap";
+import { Add } from "@carbon/react/icons";
 // import { Add } from "@carbon/react/icons";
 
 export interface MenuCardProps {
@@ -16,21 +16,25 @@ export interface MenuCardProps {
 
 function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
   return (
-    <Card className="my-4 mx-4" bg="dark" style={{ width: "18rem" }}>
+    <Card className="my-5 mx-4" bg="dark" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={url} height="200" width="800" />
-      <Card.Body>
-        <Card.Title className="text-light fw-bold">{item}</Card.Title>
-        <Card.Text className="mb-5 pb-3 text-light">{desc}</Card.Text>
-        <h4 className="text-light position-absolute bottom-0">
-          {"£"}
-          {price.toFixed(2)}{" "}
+      <Card.Body className="pb-5">
+        <Card.Title className="text-light fw-bold">
+          <Row>
+            <h5>{item}</h5>
+          </Row>
+        </Card.Title>
+        <Card.Text className="mb-5 text-light">{desc}</Card.Text>
+
+        <Container className="py-2 pb-4 mx-1 px-1 text-white-50 position-absolute bottom-0 fw-bold fs-5">
+          £{price.toFixed(2)}
           <Button
-            className="text-light align-middle fw-bold "
-            variant="outline-dark"
+            className="text-light fw-bold px-4 mx-4"
+            variant="outline-success"
           >
-            <Image src={plus} roundedCircle />
+            <h6 className="my-1 px-2">Pre-Order</h6>
           </Button>
-        </h4>
+        </Container>
       </Card.Body>
     </Card>
   );
