@@ -21,10 +21,12 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 def LoginDetails():
     logins = {}
     print("Request Recieved")
-    with sqlite3.connect(r"Database Files/Bean&Brew-Account2.db") as conn:
+    with sqlite3.connect(
+        r"Web-LoginSystem/Database Files/Bean&Brew-Account2.db"
+    ) as conn:
         print("Connection Established")
         username = request.json.get("username")
-        if not LF.UsernameCheck(username):
+        if LF.UsernameCheck(username):
             return jsonify(
                 {
                     "success": False,
@@ -32,6 +34,7 @@ def LoginDetails():
                 }
             )
         password = request.json.get("password")
+        print(password)
         if LF.PasswordCheck(password):
             password = password.encode("utf-8")
         else:
@@ -44,22 +47,16 @@ def LoginDetails():
         try:
             cu = conn.cursor()
             print("Cursor Created")
-            query = """Select * From users Where Username = ?"""
+            query = """Select * From Customers Where Username = ?"""
             cu.execute(query, (username,))
             results = cu.fetchall()
             print(results)
             for i in results:
-                logins[i[3]] = i[4]
-                # print(logins)
-                # print(logins[username])
+                logins[i[3]] = i[5]
+                print(logins)
+                print(logins[username])
             if checkpw(password, logins[username]):
-                return jsonify(
-                    {
-                        "success": True,
-                        "message": "Login Successful",
-                        "Festive Message": "Blessed Yuletide",
-                    }
-                )
+                return jsonify({"success": True, "message": "Login Successful"})
             else:
                 return jsonify({"success": False, "message": "Incorrect Login Details"})
         except Exception as e:
@@ -71,11 +68,15 @@ def LoginDetails():
 @app.route("/signup", methods=["POST"])
 def SignupDetails():
     print("Request Recieved")
-    with sqlite3.connect(r"Database Files/Bean&Brew-Account2.db") as conn:
+    with sqlite3.connect(
+        r"Web-LoginSystem/Database Files/Bean&Brew-Account2.db"
+    ) as conn:
         print("Connection Established")
         forename = request.json.get("forename")
+        print(forename)
         surname = request.json.get("surname")
         dob = request.json.get("dob")
+        print(dob)
         if not LF.DateCheck(dob):
             return jsonify(
                 {
@@ -84,6 +85,7 @@ def SignupDetails():
                 }
             )
         username = request.json.get("username")
+        print(username)
         if LF.UsernameCheck(username):
             return jsonify(
                 {
@@ -91,7 +93,7 @@ def SignupDetails():
                     "message": "Username must be 5 - 16 characters longs and alphanumeric",
                 }
             )
-        count = """Select Count(Username) From users Where Username = ?"""
+        count = """Select Count(Username) From Customers Where Username = ?"""
         cu = conn.cursor()
         print("Cursor Created")
         cu.execute(count, (username,))
@@ -112,26 +114,22 @@ def SignupDetails():
         salt = gensalt()
         hashedPassword = hashpw(password, salt)
         try:
-            statement = """INSERT INTO users(Forename, Surname, Username, DOB, Password) VALUES(?,?,?,?,?)"""
+            statement = """INSERT INTO Customers(Forename, Surname, Username, DOB, Password) VALUES(?,?,?,?,?)"""
             cu.execute(statement, (forename, surname, username, dob, hashedPassword))
             conn.commit()
-            return jsonify(
-                {
-                    "success": True,
-                    "message": "Signup Successful",
-                    "Festive Message": "Blessed Yuletide",
-                }
-            )
-        except:
-            print("Value could not be added to DB")
-            return jsonify({"success": False, "message": "Internal Server Error"}), 500
+            return jsonify({"success": True, "message": "Login Successful"})
+        except Error as e:
+            print("Value could not be added to DB", e)
+            return jsonify({"success": False, "message": "Internal Server Error"})
         # else:
         #     return jsonify({"success": False, "message": "Passwords Do NOT Match"})
 
 
 @app.route("/menu", methods=["GET"])
 def MenuDetails():
-    with sqlite3.connect(r"Web-LoginSystem/Database Files/Bean&Brew-Account2.db") as conn:
+    with sqlite3.connect(
+        r"Web-LoginSystem/Database Files/Bean&Brew-Account2.db"
+    ) as conn:
         print("Connection Established")
         query = """SELECT * FROM Menu"""
         cu = conn.cursor()
@@ -154,7 +152,7 @@ def MenuDetails():
                 "url": url,
             }
             menuItemsList.append(json)
-        return jsonify({"menuItems":menuItemsList})
+        return jsonify({"menuItems": menuItemsList})
 
 
 if __name__ == "__main__":

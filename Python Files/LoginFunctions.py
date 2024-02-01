@@ -28,13 +28,13 @@ def PasswordCheck(password):
 
 def UsernameCheck(username):
     if len(username) < 5:
-        return False
-    elif len(username) > 16:
-        return False
-    elif not username.isalnum():
-        return False
-    else:
         return True
+    elif len(username) > 16:
+        return True
+    elif not username.isalnum():
+        return True
+    else:
+        return False
 
 
 def IsDate(date, fuzzy=False):
@@ -47,7 +47,7 @@ def IsDate(date, fuzzy=False):
 
 def DateCheck(date):
     if IsDate(date, fuzzy=False):
-        date_format = "%d/%m/%Y"
+        date_format = "%Y-%m-%d"
         try:
             dateObject = datetime.datetime.strptime(date, date_format)
             return True
