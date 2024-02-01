@@ -19,7 +19,8 @@ function SignupForm() {
   const [dob, setDOB] = useState("");
   const [password, setPassword] = useState("");
   const [responseText, setResponseText] = useState("");
-  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [forename, setForename] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
 
   const handleSubmit = async (event: FormEvent) => {
@@ -46,7 +47,8 @@ function SignupForm() {
 
     try {
       const response = await axios.post("http://localhost:5000/signup", {
-        name: name,
+        forename: forename,
+        surname: surname,
         dob: dob,
         username: username,
         password: password,
@@ -66,7 +68,7 @@ function SignupForm() {
       <Row>
         <Col className="py-5" />
       </Row>
-      <MDBContainer fluid bgColor={themeContext?.theme}>
+      <MDBContainer fluid className="">
         <MDBRow className="d-flex justify-content-center align-items-center h-100">
           <MDBCol col="12">
             <MDBCard
@@ -89,7 +91,7 @@ function SignupForm() {
                           required
                           type="text"
                           placeholder="Enter forename"
-                          onChange={(e) => setName(e.target.value)}
+                          onChange={(e) => setForename(e.target.value)}
                         />
                       </Col>
                       <Col>
@@ -98,7 +100,7 @@ function SignupForm() {
                           required
                           type="text"
                           placeholder="Enter surname"
-                          onChange={(e) => setName(e.target.value)}
+                          onChange={(e) => setSurname(e.target.value)}
                         />
                       </Col>
                     </Row>

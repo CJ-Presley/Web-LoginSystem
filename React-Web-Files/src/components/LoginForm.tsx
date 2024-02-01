@@ -30,13 +30,16 @@ function LoginForm() {
       !password.match(
         /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9@#$%^_&-+=]+){5,16}$/
       )
+      
     )
+    console.log(password);
       try {
         const response = await axios.post("http://localhost:5000/login", {
           username: username,
           password: password,
         });
         setResponseText(JSON.stringify(response.data));
+        console.log(response)
       } catch (error) {
         if (axios.isAxiosError(error)) {
           setResponseText(error.message);
@@ -51,7 +54,7 @@ function LoginForm() {
       <Row>
         <Col className="mt-5" />
       </Row>
-      <MDBContainer fluid bgColor={themeContext?.theme} className="mb-5">
+      <MDBContainer fluid className="mb-5">
         <MDBRow className="d-flex justify-content-center align-items-center h-100">
           <MDBCol col="12">
             <MDBCard
@@ -65,17 +68,17 @@ function LoginForm() {
                 </p>
 
                 <Form onSubmit={handleSubmit}>
-                  <Form.Group className="" controlId="formBasicEmail">
+                  <Form.Group className="">
                     <Form.Label>Username</Form.Label>
                     <Form.Control
                       id="username"
                       required
                       type="text"
-                      placeholder="Enter email"
+                      placeholder="Username"
                       onChange={(e) => setUsername(e.target.value)}
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Group className="mb-3">
                     <Form.Label>Password</Form.Label>
                     <Row>
                       <Col>
@@ -89,7 +92,7 @@ function LoginForm() {
                       </Col>
                     </Row>
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                  <Form.Group className="mb-3">
                     <Form.Check
                       type="checkbox"
                       label="Show Password"
