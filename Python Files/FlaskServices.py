@@ -122,7 +122,7 @@ def SignupDetails():
             print("Value could not be added to DB", e)
             return jsonify({"success": False, "message": "Internal Server Error"})
         # else:
-        #     return jsonify({"success": False, "message": "Passwords Do NOT Match"})
+        #     return jsonify({"success": False, "message": "Pas6swords Do NOT Match"})
 
 
 @app.route("/menu", methods=["GET"])
@@ -158,3 +158,4 @@ def MenuDetails():
 if __name__ == "__main__":
     app.run()
     # ssl_context="adhoc"
+    
