@@ -44,7 +44,7 @@ function About() {
                   Our First Location was:
                 </h2>
                 <p className="text-white-50 px-2 mx-2 mt-1 mb-3 fs-4 text-center fw-bold">
-                  in Knaresboroug, Harrogate
+                  in Knaresborough, Harrogate
                 </p>
               </Col>
             </Row>
