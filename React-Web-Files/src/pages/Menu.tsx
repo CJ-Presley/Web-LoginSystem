@@ -2,8 +2,16 @@ import React, { useEffect, useState } from "react";
 import MenuCard, { MenuCardProps } from "../components/MenuCards";
 import axios from "axios";
 import { MENU_URL } from "../constants/APIconstants";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Placeholder,
+  Row,
+} from "react-bootstrap";
 import { ArrowRight } from "@carbon/react/icons";
+import PlaceholderImg from "../assets/placeholder.png";
 
 function Menu() {
   const [menuCards, setMenuCards] = useState([]);
@@ -40,11 +48,50 @@ function Menu() {
         <Col className="border-bottom my-3"></Col>
         <div className="mx-5 px-5">
           <Col className="mx-5">
-            <Row fluid>{menuCards}</Row>
+            <Row>
+              {menuCards}
+              <Col className="my-2 mx-1 px-4">
+                <Card
+                  className="border-rounded border-light"
+                  bg="dark"
+                  style={{ width: "18rem", height: "25rem" }}
+                >
+                  <Card.Img
+                    variant="top"
+                    src={PlaceholderImg}
+                    max-height="300"
+                  />
+                  <Card.Body className="pb-5">
+                    <Placeholder
+                      as={Card.Title}
+                      animation="glow"
+                      className="text-light"
+                    >
+                      <Placeholder xs={6} />
+                    </Placeholder>
+                    <Placeholder
+                      as={Card.Text}
+                      animation="glow"
+                      className="text-secondary"
+                    >
+                      <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
+                      <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
+                      <Placeholder xs={8} />
+                    </Placeholder>
+                    <Container className="py-2 pb-4 mx-1 px-1 text-secondary position-absolute bottom-0 fw-bold fs-5">
+                      <Placeholder className="m-2" animation="glow">
+                        <Placeholder xs={3} />{" "}
+                      </Placeholder>
+                      <Placeholder.Button variant="outline-success" xs={6} />
+                    </Container>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </Col>
         </div>
         <Container>
-          <Row className="pb-4">
+          <Row className="py-3">
             <Button className="fw-bold" variant="success">
               Next <ArrowRight className="fw-bold" />
             </Button>

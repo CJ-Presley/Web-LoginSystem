@@ -16,27 +16,32 @@ export interface MenuCardProps {
 
 function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
   return (
-    <Card className="my-5 mx-4" bg="dark" style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={url} height="200" width="800" />
-      <Card.Body className="pb-5">
-        <Card.Title className="text-light fw-bold">
-          <Row>
-            <h5>{item}</h5>
-          </Row>
-        </Card.Title>
-        <Card.Text className="mb-5 text-light">{desc}</Card.Text>
-
-        <Container className="py-2 pb-4 mx-1 px-1 text-white-50 position-absolute bottom-0 fw-bold fs-5">
-          £{price.toFixed(2)}
-          <Button
-            className="text-light fw-bold px-4 mx-4"
-            variant="outline-success"
-          >
-            <h6 className="my-1 px-2">Pre-Order</h6>
-          </Button>
-        </Container>
-      </Card.Body>
-    </Card>
+    <Col className="my-2 mx-1 px-4">
+      <Card
+        className="border-rounded border-light"
+        bg="dark"
+        style={{ width: "18rem", height: "25rem" }}
+      >
+        <Card.Img variant="top" src={url} height="300" />
+        <Card.Body className="pb-5">
+          <Card.Title className="text-light fw-bold">
+            <Row>
+              <h5>{item}</h5>
+            </Row>
+          </Card.Title>
+          <Card.Text className="mb-5 text-light">{desc}</Card.Text>
+          <Container className="py-2 pb-4 mx-1 px-1 text-white-50 position-absolute bottom-0 fw-bold fs-5">
+            £{price.toFixed(2)}
+            <Button
+              className="text-light fw-bold px-4 mx-4"
+              variant="outline-success"
+            >
+              <h6 className="my-1 px-2">Pre-Order</h6>
+            </Button>
+          </Container>
+        </Card.Body>
+      </Card>
+    </Col>
   );
 }
 
