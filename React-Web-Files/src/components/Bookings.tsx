@@ -6,11 +6,11 @@ import Img1 from "../assets/Latte_art_3.jpg";
 function BookingCards() {
   return (
     <>
-      <Container>
+      <Container className="">
         <Row className="py-5">
           <Col className="mx-1">
             <Card bg="dark">
-              <Card.Img variant="top" src={Img2} height="200" width="80" />
+              <Card.Img variant="top" src={Img2} height="500" width="80" />
               <Card.Body>
                 <Card.Title className="text-light fw-bold">
                   Table Bookings
@@ -30,7 +30,7 @@ function BookingCards() {
           </Col>
           <Col className="mx-1">
             <Card bg="dark">
-              <Card.Img variant="top" src={Img3} height="200" width="80" />
+              <Card.Img variant="top" src={Img1} height="500" width="80" />
               <Card.Body>
                 <Card.Title className="text-light fw-bold">
                   Classes Booking

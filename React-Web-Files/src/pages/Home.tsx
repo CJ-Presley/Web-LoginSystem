@@ -50,7 +50,7 @@ function Home() {
             <PHContent />
           </Col>
         </Row>
-        <Row className="py-2">
+        <Row className="pb-3 pt-2">
           <Col>
             <PHContent />
           </Col>

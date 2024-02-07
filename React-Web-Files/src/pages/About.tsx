@@ -48,6 +48,75 @@ function About() {
                 </p>
               </Col>
             </Row>
+            <Row>
+              <Col className="border-light rounded-corners mx-2">
+                <h5 className="fw-bold py-2 text-center text-white">
+                  Harrogate
+                  <br /> Opening Times:
+                </h5>
+                <p className="text-white-50 px-2 mx-2 mt-1 mb-3 fs-6 text-center fw-bold">
+                  Mon - 9:30 -{">"} 17:30
+                  <br />
+                  Tue - 9:30 -{">"} 17:30
+                  <br />
+                  Wed - 9:30 -{">"} 17:30
+                  <br />
+                  Thur - 9:30 -{">"} 17:30
+                  <br />
+                  Fri - 9:00 -{">"} 18:00
+                  <br />
+                  Sat - 8:00 -{">"} 16:30
+                  <br />
+                  Sun - CLOSED
+                  <br />
+                </p>
+              </Col>
+              <Col className="border-light rounded-corners mx-2">
+                {" "}
+                <h5 className="fw-bold py-2 text-center text-white">
+                  Knaresborough Opening Times:
+                </h5>
+                <p className="text-white-50 px-2 mx-2 mt-1 mb-3 fs-6 text-center fw-bold">
+                  Mon - 9:30 -{">"} 17:30
+                  <br />
+                  Tue - 9:30 -{">"} 17:30
+                  <br />
+                  Wed - 9:30 -{">"} 17:30
+                  <br />
+                  Thur - 9:30 -{">"} 17:30
+                  <br />
+                  Fri - 9:00 -{">"} 18:00
+                  <br />
+                  Sat - 8:00 -{">"} 16:30
+                  <br />
+                  Sun - CLOSED
+                  <br />
+                </p>
+              </Col>
+              <Col className="border-light rounded-corners mx-2">
+                {" "}
+                <h5 className="fw-bold py-2 text-center text-white">
+                  Leeds
+                  <br /> Opening Times:
+                </h5>
+                <p className="text-white-50 px-2 mx-2 mt-1 mb-3 fs-6 text-center fw-bold">
+                  Mon - 9:30 -{">"} 17:30
+                  <br />
+                  Tue - 9:30 -{">"} 17:30
+                  <br />
+                  Wed - 9:30 -{">"} 17:30
+                  <br />
+                  Thur - 9:30 -{">"} 17:30
+                  <br />
+                  Fri - 9:00 -{">"} 18:00
+                  <br />
+                  Sat - 8:00 -{">"} 16:30
+                  <br />
+                  Sun - CLOSED
+                  <br />
+                </p>
+              </Col>
+            </Row>
           </Col>
           <Col className="border-light rounded-corners py-2 mx-3" xs={4}>
             <h2 className="fw-bold py-1 text-center text-white border-secondary border-bottom">
@@ -56,10 +125,13 @@ function About() {
             <Image
               src={Founder}
               alt="Founder"
-              className="mx-5 px-1 py-3"
+              className="mx-5 my-3"
               height="500"
               rounded
             />
+            <h4 className="text-white-50 fw-bold text-center mt-3">
+              {"[Founder's Name]"}
+            </h4>
           </Col>
         </Row>
       </Container>
