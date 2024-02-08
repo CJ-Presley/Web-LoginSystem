@@ -10,7 +10,12 @@ function NavBar() {
 
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark" className="fw-bold sticky-top fluid">
+      <Navbar
+        bg="dark"
+        data-bs-theme="dark"
+        className="fw-bold sticky-top bg-body-tertiary"
+        expand="lg"
+      >
         <Container>
           <Navbar.Brand href="/">
             <img
@@ -21,66 +26,68 @@ function NavBar() {
               alt="Logo"
             />
           </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link className="" href="/">
-              Home
-            </Nav.Link>
-            <Nav.Link className="" href="/menu">
-              Menu
-            </Nav.Link>
-            <Nav.Link className="" href="/about">
-              About
-            </Nav.Link>
-            <Nav.Link className="" href="/bookings">
-              Bookings
-            </Nav.Link>
-            <Nav.Link className="" href="/contacts">
-              Contacts
-            </Nav.Link>
-          </Nav>
-          <Nav>
-            <Nav.Link href="/dash" className=" fw-bold" disabled>
-              Dashboard
-            </Nav.Link>
-            <NavDropdown
-              title="More Options"
-              id="basic-nav-dropdown"
-              className="fw-bold "
-            >
-              <NavDropdown.Item className="" href="/login">
-                Login
-              </NavDropdown.Item>
-              <NavDropdown.Item className="" href="/checkout">
-                <WirelessCheckout /> Checkout
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item
-                href="/"
-                className="text-danger fw-bold"
-                disabled
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse className="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link className="" href="/">
+                Home
+              </Nav.Link>
+              <Nav.Link className="" href="/menu">
+                Menu
+              </Nav.Link>
+              <Nav.Link className="" href="/about">
+                About
+              </Nav.Link>
+              <Nav.Link className="" href="/bookings">
+                Bookings
+              </Nav.Link>
+              <Nav.Link className="" href="/contacts">
+                Contacts
+              </Nav.Link>
+            </Nav>
+            <Nav>
+              <Nav.Link href="/dash" className=" fw-bold" disabled>
+                Dashboard
+              </Nav.Link>
+              <NavDropdown
+                title="More Options"
+                id="basic-nav-dropdown"
+                className="fw-bold "
               >
-                Sign Out
-              </NavDropdown.Item>
-            </NavDropdown>
-
-            {/* <Button
-              variant="light"
-              onClick={() =>
-                themeContext?.setTheme(
-                  themeContext?.theme === "dark" ? "light" : "dark"
-                )
-              }
-            >
-              <img
-                src={Icon}
-                alt="Button Icon"
-                className="d-block align-middle"
-              />
-              {/* <a style={{ textTransform: "capitalize" }}>
-                {themeContext?.theme} Mode
-              </a>
-            </Button> */}
-          </Nav>
+                <NavDropdown.Item className="" href="/login">
+                  Login
+                </NavDropdown.Item>
+                <NavDropdown.Item className="" href="/checkout">
+                  <WirelessCheckout /> Checkout
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item
+                  href="/"
+                  className="text-danger fw-bold"
+                  disabled
+                >
+                  Sign Out
+                </NavDropdown.Item>
+              </NavDropdown>
+              {/* <Button
+                variant="light"
+                onClick={() =>
+                  themeContext?.setTheme(
+                    themeContext?.theme === "dark" ? "light" : "dark"
+                  )
+                }
+              >
+                <img
+                  src={Icon}
+                  alt="Button Icon"
+                  className="d-block align-middle"
+                />
+                {/* <a style={{ textTransform: "capitalize" }}>
+                  {themeContext?.theme} Mode
+                </a>
+              </Button> */}
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
