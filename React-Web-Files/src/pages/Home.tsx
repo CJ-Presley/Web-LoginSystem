@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import HomeCar from "../components/CarouselHome";
 import PlaceholderCard from "../components/placeholderCard";
-import { Row, Col, Placeholder, Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import PHContent from "../components/PlaceholderContent";
 
 function Home() {
