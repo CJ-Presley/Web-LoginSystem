@@ -3,6 +3,7 @@ import MenuCard, { MenuCardProps } from "../components/MenuCards";
 import axios from "axios";
 import { MENU_URL } from "../constants/APIconstants";
 import {
+  Badge,
   Button,
   Card,
   Col,
@@ -54,7 +55,7 @@ function Menu() {
                 <Card
                   className="border-rounded border-light"
                   bg="dark"
-                  style={{ width: "18rem", height: "25rem" }}
+                  style={{ width: "18rem", height: "26rem" }}
                 >
                   <Card.Img
                     variant="top"
@@ -82,7 +83,7 @@ function Menu() {
                       <Placeholder className="m-2" animation="glow">
                         <Placeholder xs={3} />{" "}
                       </Placeholder>
-                      <Placeholder.Button variant="outline-success" xs={6} />
+                      <Placeholder.Button variant="warning" xs={6} />
                     </Container>
                   </Card.Body>
                 </Card>

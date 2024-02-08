@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import plus from "../assets/icons8-plus-48.png";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Badge } from "react-bootstrap";
 import { Add } from "@carbon/react/icons";
 // import { Add } from "@carbon/react/icons";
 
@@ -16,17 +16,20 @@ export interface MenuCardProps {
 
 function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
   return (
-    <Col className="my-2 mx-1 px-4">
+    <Col className="my-2 mx-3 px-1">
       <Card
         className="border-rounded border-light"
         bg="dark"
-        style={{ width: "18rem", height: "25rem" }}
+        style={{ width: "18rem", height: "26rem" }}
       >
         <Card.Img variant="top" src={url} height="300" />
         <Card.Body className="pb-5">
           <Card.Title className="text-light fw-bold">
             <Row>
-              <h5>{item}</h5>
+              <h5>
+                {item}
+                <Badge className="mx-2" bg="danger" pill>{type}</Badge>
+              </h5>
             </Row>
           </Card.Title>
           <Card.Text className="mb-5 text-light">{desc}</Card.Text>
@@ -34,7 +37,7 @@ function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
             £{price.toFixed(2)}
             <Button
               className="text-light fw-bold px-4 mx-4"
-              variant="outline-success"
+              variant="outline-warning"
             >
               <h6 className="my-1 px-2">Pre-Order</h6>
             </Button>
