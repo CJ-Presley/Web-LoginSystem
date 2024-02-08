@@ -9,8 +9,10 @@ const BOOKING_PATH = "/bookings";
 const NOT_FOUND_PATH = "/*";
 const TABLE_PATH = "/reservations";
 const CLASS_PATH = "/classes";
+const CHECKOUT_PATH = "/checkout";
 
 export {
+  CHECKOUT_PATH,
   LOGIN_PATH,
   SIGNUP_PATH,
   INDEX_PATH,

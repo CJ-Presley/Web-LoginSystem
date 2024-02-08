@@ -14,6 +14,7 @@ import {
   BOOKING_PATH,
   CLASS_PATH,
   TABLE_PATH,
+  CHECKOUT_PATH,
 } from "./constants/paths";
 import Home from "./pages/Home";
 import FooterComp from "./components/Footer";
@@ -24,6 +25,9 @@ import Dash from "./pages/Dashboard";
 import Error from "./pages/NotFound";
 import Menu from "./pages/Menu";
 import Bookings from "./pages/BookingsPage";
+import Tables from "./pages/Tables";
+import Classes from "./pages/Classes";
+import Checkout from "./pages/Checkout";
 
 export function App() {
   // const themeContext = useContext(ThemeContext);
@@ -41,8 +45,9 @@ export function App() {
           <Route path={NOT_FOUND_PATH} element={<Error />} />
           <Route path={MENU_PATH} element={<Menu />} />
           <Route path={BOOKING_PATH} element={<Bookings />} />
-          <Route path={TABLE_PATH} element={<Bookings />} />
-          <Route path={CLASS_PATH} element={<Bookings />} />
+          <Route path={TABLE_PATH} element={<Tables />} />
+          <Route path={CLASS_PATH} element={<Classes />} />
+          <Route path={CHECKOUT_PATH} element={<Checkout />} />
         </Routes>
         <FooterComp />
       </ThemeProvider>
