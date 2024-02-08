@@ -28,12 +28,13 @@ import Bookings from "./pages/BookingsPage";
 import Tables from "./pages/Tables";
 import Classes from "./pages/Classes";
 import Checkout from "./pages/Checkout";
+import AccountProvider from "./components/accountProvider";
 
 export function App() {
   // const themeContext = useContext(ThemeContext);
   return (
     <>
-      <ThemeProvider>
+      <AccountProvider>
         <NavBar />
         <Routes>
           <Route path={INDEX_PATH} element={<Home />} />
@@ -50,7 +51,7 @@ export function App() {
           <Route path={CHECKOUT_PATH} element={<Checkout />} />
         </Routes>
         <FooterComp />
-      </ThemeProvider>
+      </AccountProvider>
     </>
   );
 }

@@ -9,10 +9,12 @@ import {
 } from "mdb-react-ui-kit";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import axios from "axios";
+import { AccountDetailsContext } from "./accountProvider";
 function LoginForm() {
   useEffect(() => {
     document.title = "Bean & Brew | Login";
   });
+  const accountDetailsContext = useContext(AccountDetailsContext);
   const themeContext = useContext(ThemeContext);
   const [showPass, setShowPass] = useState(false);
   const [username, setUsername] = useState("");
@@ -30,23 +32,28 @@ function LoginForm() {
       !password.match(
         /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9@#$%^_&-+=]+){5,16}$/
       )
-      
     )
-    console.log(password);
-      try {
-        const response = await axios.post("http://localhost:5000/login", {
-          username: username,
-          password: password,
+      console.log(password);
+    try {
+      const response = await axios.post("http://localhost:5000/login", {
+        username: username,
+        password: password,
+      });
+      setResponseText(response.data["success"]);
+      // console.log(response?.data)
+      if (response?.data["success"]) {
+        accountDetailsContext?.setAccountDetails({
+          username,
+          password,
         });
-        setResponseText(JSON.stringify(response.data));
-        console.log(response)
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          setResponseText(error.message);
-        } else {
-          setResponseText(String(error));
-        }
       }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setResponseText(error.message);
+      } else {
+        setResponseText(String(error));
+      }
+    }
   };
 
   return (
@@ -104,7 +111,7 @@ function LoginForm() {
                       <Button
                         variant="dark"
                         type="submit"
-                        className="border border-light "
+                        className="border border-light"
                       >
                         Login
                       </Button>

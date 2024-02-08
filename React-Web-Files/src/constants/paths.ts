@@ -3,13 +3,13 @@ const SIGNUP_PATH = "/signup";
 const INDEX_PATH = "/";
 const CONTACTS_PATH = "/contacts";
 const ABOUT_PATH = "/about";
-const DASHBOARD_PATH = "/dash";
+const DASHBOARD_PATH = "/PqRsTuV12345678";
 const MENU_PATH = "/menu";
 const BOOKING_PATH = "/bookings";
 const NOT_FOUND_PATH = "/*";
 const TABLE_PATH = "/reservations";
 const CLASS_PATH = "/classes";
-const CHECKOUT_PATH = "/checkout";
+const CHECKOUT_PATH = "/XyZ9876ABcd3210EfGh";
 
 export {
   CHECKOUT_PATH,

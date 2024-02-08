@@ -9,10 +9,12 @@ import {
 } from "mdb-react-ui-kit";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import axios from "axios";
+import { AccountDetailsContext } from "./accountProvider";
 function SignupForm() {
   useEffect(() => {
     document.title = "Bean & Brew | Sign Up";
   });
+  const accountDetailsContext = useContext(AccountDetailsContext)
   const themeContext = useContext(ThemeContext);
   const [showPass, setShowPass] = useState(false);
   const [username, setUsername] = useState("");
@@ -53,7 +55,12 @@ function SignupForm() {
         username: username,
         password: password,
       });
-      setResponseText(JSON.stringify(response.data));
+      setResponseText(response.data["message"]);
+      // console.log(response?.data);
+      // if success == true : set password + username -> accountDetails
+      if(response?.data["success"]){
+        accountDetailsContext?.setAccountDetails({username,password})
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setResponseText(error.message);
@@ -87,7 +94,7 @@ function SignupForm() {
                     <Row>
                       <Col>
                         <Form.Control
-                          id="username"
+                          id="forename"
                           required
                           type="text"
                           placeholder="Enter forename"
@@ -96,7 +103,7 @@ function SignupForm() {
                       </Col>
                       <Col>
                         <Form.Control
-                          id="username"
+                          id="surname"
                           required
                           type="text"
                           placeholder="Enter surname"
@@ -139,7 +146,7 @@ function SignupForm() {
                       </Col>
                       <Col>
                         <Form.Control
-                          id="password"
+                          id="confirmpassword"
                           required
                           type={showPass ? "text" : "password"}
                           placeholder="Confirm Password"

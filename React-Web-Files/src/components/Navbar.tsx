@@ -3,10 +3,14 @@ import Logo from "../assets/Logo2.png";
 // import { useContext } from "react";
 // import { ThemeContext } from "./ThemeProvider";
 // import Icon from "../assets/themeIcon.png";
-import { WirelessCheckout }  from "@carbon/react/icons"
+import { WirelessCheckout } from "@carbon/react/icons";
+import { AccountDetailsContext } from "./accountProvider";
+import { useContext, useState } from "react";
 
 function NavBar() {
   // const themeContext = useContext(ThemeContext);
+  const accountDetailsContext = useContext(AccountDetailsContext);
+  const [buttonState, setButttonState] = useState("");
 
   return (
     <>
@@ -46,7 +50,11 @@ function NavBar() {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link href="/dash" className=" fw-bold" disabled>
+              <Nav.Link
+                href="/PqRsTuV12345678"
+                className=" fw-bold"
+                disabled={accountDetailsContext?.accountDetails ? false : true}
+              >
                 Dashboard
               </Nav.Link>
               <NavDropdown
@@ -54,17 +62,26 @@ function NavBar() {
                 id="basic-nav-dropdown"
                 className="fw-bold "
               >
-                <NavDropdown.Item className="" href="/login">
-                  Login
+                <NavDropdown.Item
+                  className=""
+                  href="/login"
+                  disabled={
+                    accountDetailsContext?.accountDetails ? true : false
+                  }
+                >
+                  Login: {accountDetailsContext?.accountDetails?.username}
                 </NavDropdown.Item>
-                <NavDropdown.Item className="" href="/checkout">
+                <NavDropdown.Item className="" href="/XyZ9876ABcd3210EfGh">
                   <WirelessCheckout /> Checkout
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   href="/"
                   className="text-danger fw-bold"
-                  disabled
+                  disabled={
+                    accountDetailsContext?.accountDetails ? false : true
+                  }
+                  onClick={() => accountDetailsContext?.setAccountDetails(null)}
                 >
                   Sign Out
                 </NavDropdown.Item>
