@@ -1,5 +1,4 @@
 import { Card, Button, Col, Row, Container } from "react-bootstrap";
-import Img3 from "../assets/bake.jpg";
 import Img2 from "../assets/cafe.png";
 import Img1 from "../assets/Latte_art_3.jpg";
 
