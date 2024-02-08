@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Col, Container, Row, Image } from "react-bootstrap";
-import Founder from "../assets/boss.jpeg";
+import Founder from "../assets/founder1.jpg";
+import "../css/components.css";
 
 function About() {
   useEffect(() => {
@@ -67,7 +68,7 @@ function About() {
                   <br />
                   Sat - 8:00 -{">"} 16:30
                   <br />
-                  Sun - CLOSED
+                  Sun - <span className="text-danger fw-bold">CLOSED</span>
                   <br />
                 </p>
               </Col>
@@ -89,7 +90,7 @@ function About() {
                   <br />
                   Sat - 8:00 -{">"} 16:30
                   <br />
-                  Sun - CLOSED
+                  Sun - <span className="text-danger fw-bold">CLOSED</span>
                   <br />
                 </p>
               </Col>
@@ -112,22 +113,26 @@ function About() {
                   <br />
                   Sat - 8:00 -{">"} 16:30
                   <br />
-                  Sun - CLOSED
+                  Sun - <span className="text-danger fw-bold">CLOSED</span>
                   <br />
                 </p>
               </Col>
             </Row>
           </Col>
-          <Col className="border-light rounded-corners py-2 mx-3" xs={4}>
-            <h2 className="fw-bold py-1 text-center text-white border-secondary border-bottom">
+          <Col
+            className="border-light rounded-corners py-2 mx-3"
+            xs={4}
+            style={{ height: "42rem" }}
+          >
+            <h2 className="fw-bold py-1 mx-5 text-center text-white border-secondary border-bottom">
               Our Founder
             </h2>
             <Image
               src={Founder}
               alt="Founder"
-              className="mx-5 my-3"
-              height="500"
+              className="mx-4 px-2 my-1 responsive-image "
               rounded
+              style={{ height: "33rem" }}
             />
             <h4 className="text-white-50 fw-bold text-center mt-3">
               {"[Founder's Name]"}
