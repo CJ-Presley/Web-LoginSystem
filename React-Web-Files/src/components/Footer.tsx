@@ -1,16 +1,11 @@
 import {
   MDBFooter,
   MDBContainer,
-  // MDBBtn,
-  // MDBIcon,
   MDBCol,
   MDBRow,
 } from "mdb-react-ui-kit";
-// import { useContext } from "react";
-// import { ThemeContext } from "./ThemeProvider";
 
 function FooterComp() {
-  // const themeContext = useContext(ThemeContext);
   return (
     <>
       <MDBFooter bgColor="dark" className="text-secondary">

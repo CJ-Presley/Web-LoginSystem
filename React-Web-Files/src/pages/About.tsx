@@ -17,7 +17,7 @@ function About() {
         </Row>
         <Row className="py-3">
           <Col className="py-2 mx-3" xs={7}>
-            <Row className="border-light rounded-corners my-2">
+            <Row className="border-light rounded-corners-dark my-2">
               <h2 className="fw-bold py-1 text-center text-white border-secondary border-bottom">
                 Our Story
               </h2>
@@ -32,7 +32,7 @@ function About() {
               </p>
             </Row>
             <Row className="my-2">
-              <Col className="border-light rounded-corners mx-2" xs={4}>
+              <Col className="border-light rounded-corners-dark mx-2" xs={4}>
                 <h2 className="fw-bold py-2 text-center text-white">
                   Founded in:
                 </h2>
@@ -40,7 +40,7 @@ function About() {
                   August of 1924
                 </p>
               </Col>
-              <Col className="border-light rounded-corners mx-2">
+              <Col className="border-light rounded-corners-dark mx-2">
                 <h2 className="fw-bold py-2 text-center text-white">
                   Our First Location was:
                 </h2>
@@ -50,7 +50,7 @@ function About() {
               </Col>
             </Row>
             <Row>
-              <Col className="border-light rounded-corners mx-2">
+              <Col className="border-light rounded-corners-dark mx-2">
                 <h5 className="fw-bold py-2 text-center text-white">
                   Harrogate
                   <br /> Opening Times:
@@ -72,7 +72,7 @@ function About() {
                   <br />
                 </p>
               </Col>
-              <Col className="border-light rounded-corners mx-2">
+              <Col className="border-light rounded-corners-dark mx-2">
                 {" "}
                 <h5 className="fw-bold py-2 text-center text-white">
                   Knaresborough Opening Times:
@@ -94,7 +94,7 @@ function About() {
                   <br />
                 </p>
               </Col>
-              <Col className="border-light rounded-corners mx-2">
+              <Col className="border-light rounded-corners-dark mx-2">
                 {" "}
                 <h5 className="fw-bold py-2 text-center text-white">
                   Leeds
@@ -120,7 +120,7 @@ function About() {
             </Row>
           </Col>
           <Col
-            className="border-light rounded-corners py-2 mx-3"
+            className="border-light rounded-corners-dark py-2 mx-3"
             xs={4}
             style={{ height: "42rem" }}
           >

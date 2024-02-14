@@ -1,7 +1,7 @@
 import { ReactNode, createContext } from "react";
 import useAccountDetails, {
   AccountDetailsContextType,
-} from "../hooks/useAccoundDetails";
+} from "../hooks/useAccountDetails";
 
 export const AccountDetailsContext =
   createContext<AccountDetailsContextType | null>(null);

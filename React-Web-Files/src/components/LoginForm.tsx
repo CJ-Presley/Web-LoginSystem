@@ -39,7 +39,7 @@ function LoginForm() {
         username: username,
         password: password,
       });
-      setResponseText(response.data["success"]);
+      setResponseText(response.data["message"]);
       // console.log(response?.data)
       if (response?.data["success"]) {
         accountDetailsContext?.setAccountDetails({
@@ -118,7 +118,7 @@ function LoginForm() {
                     </Col>
                   </Row>
                   {responseText && (
-                    <p className="text-white">Response: {responseText}</p>
+                    <p className="text-white text-center">Response: {responseText}</p>
                   )}
                   <Row>
                     <Col>

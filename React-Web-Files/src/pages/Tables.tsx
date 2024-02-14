@@ -7,7 +7,7 @@ function Tables() {
   });
   return (
     <>
-      <Container></Container>
+      <Container><h1 className="fw-bold border-white-50 border-bottom text-center">Bookings</h1></Container>
     </>
   );
 }

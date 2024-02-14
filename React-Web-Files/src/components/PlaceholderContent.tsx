@@ -4,7 +4,7 @@ import "../css/components.css";
 function PHContent() {
   return (
     <>
-      <div className="fw-bold text-light px-3 rounded-corners py-2">
+      <div className="fw-bold text-light px-3 rounded-corners-dark py-2">
         <Placeholder className="py-2 text-light fs-2" animation="glow">
           <Placeholder xs={6} />
         </Placeholder>

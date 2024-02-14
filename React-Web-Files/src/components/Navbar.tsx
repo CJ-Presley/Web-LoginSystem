@@ -86,23 +86,6 @@ function NavBar() {
                   Sign Out
                 </NavDropdown.Item>
               </NavDropdown>
-              {/* <Button
-                variant="light"
-                onClick={() =>
-                  themeContext?.setTheme(
-                    themeContext?.theme === "dark" ? "light" : "dark"
-                  )
-                }
-              >
-                <img
-                  src={Icon}
-                  alt="Button Icon"
-                  className="d-block align-middle"
-                />
-                {/* <a style={{ textTransform: "capitalize" }}>
-                  {themeContext?.theme} Mode
-                </a>
-              </Button> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -1,8 +1,17 @@
-.rounded-corners {
-  border-radius: 25px;
+.rounded-corners-dark {
+  border-radius: 20px;
   background-color: #212529;
 }
 .image-responsive {
   width: 100%;
   height: auto;
+}
+.rounded-corners-light {
+  border-radius: 20px;
+  background-color: rgb(245, 245, 245);
+}
+.rounded-corners-border {
+  border-radius: 20px;
+  border-style:solid;
+  border-color: rgba(189, 189, 189, 0.5);
 }
