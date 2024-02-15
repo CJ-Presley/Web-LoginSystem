@@ -5,7 +5,7 @@ import axios from "axios";
 import MenuCard, { MenuCardProps } from "../components/MenuCards";
 import { MENU_URL } from "../constants/APIconstants";
 
-const BASKET = { Muffin: 1, "Veg Pasty": 1, Chai: 1, Latte: 4 };
+const BASKET = { Muffin: 1, Chai: 1, Latte: 1, "Choc Hamper": 1 };
 
 function Checkout() {
   const [totalCost, setTotalCost] = useState(0);
@@ -21,27 +21,30 @@ function Checkout() {
       const items = response?.data["menuItems"];
       console.log(items);
 
-      setItemCards([]);
+      console.log("Menu items: " + items);
+
+      const tempItemCards: ReactNode[] = [];
+      let tempTotalCost = 0;
+
       items.forEach((item: ItemCardProps) => {
         if (item.item in BASKET) {
+          console.log(itemCards);
           console.log(item.item + " is in the basket.");
-          setItemCards([
-            ...itemCards,
+          tempItemCards.push(
             <ItemCards
               key={item.item}
               item={item.item}
               desc={item.desc}
               price={item.price}
               url={item.url}
-            />,
-          ]);
-          setTotalCost(
-            totalCost + item.price * BASKET[item.item as keyof typeof BASKET]
+            />
           );
+          tempTotalCost +=
+            item.price * BASKET[item.item as keyof typeof BASKET];
         }
+        setItemCards(tempItemCards);
+        setTotalCost(tempTotalCost);
       });
-
-      console.log(itemCards);
     };
     getMenu();
   }, []);
