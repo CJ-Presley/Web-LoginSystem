@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import "../css/components.css";
-import FormWidget from "../components/TableBookingForm";
+import TableBookings from "../components/TableBookingForm";
 
 function Tables() {
   useEffect(() => {
@@ -9,7 +9,7 @@ function Tables() {
   });
   return (
     <>
-        <FormWidget />
+      <TableBookings />
     </>
   );
 }

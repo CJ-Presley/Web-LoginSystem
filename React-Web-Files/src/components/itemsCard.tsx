@@ -25,10 +25,14 @@ function ItemCards({ item, desc, price, url }: ItemCardProps) {
           <Col xs={6}>
             <h6 className="py-4 text-light fw-bold">{item}</h6>
           </Col>
-          <Col className="text-white-50 fw-bold fs-6 text-center py-4">£{price.toFixed(2)}</Col>
+          <Col className="text-white-50 fw-bold fs-6 text-center py-4">
+            £{price.toFixed(2)}
+          </Col>
         </Row>
       </div>
     </>
   );
 }
 export default ItemCards;
+
+

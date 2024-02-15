@@ -1,13 +1,25 @@
-import { Widget } from "@typeform/embed-react";
+import React, { useEffect } from "react";
 
-function FormWidget() {
+const TableBookings = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://tally.so/widgets/embed.js";
+    script.async = true;
+    document.head.appendChild(script);
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   return (
-    <Widget
-      id="iPU8d272"
-      style={{ width: "100%", height: "900px" }}
-      className="my-form"
+    <iframe
+      data-tally-src="https://tally.so/r/n06MBy"
+      width="100%"
+      height="1100"
+      className=""
+      title="Bean & Brew - Table Bookings"
     />
   );
-}
+};
 
-export default FormWidget;
+export default TableBookings;
