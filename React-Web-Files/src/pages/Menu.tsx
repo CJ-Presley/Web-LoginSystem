@@ -93,9 +93,12 @@ function Menu() {
         </div>
         <Container>
           <Row className="py-3">
-            <Button className="fw-bold" variant="success">
-              Next <ArrowRight className="fw-bold" />
-            </Button>
+            <Col></Col>
+            <Col xs={2}>
+              <Button className="fw-bold text-dark" variant="warning">
+                <ArrowRight className="fw-bold mx-5" />
+              </Button>
+            </Col>
           </Row>
         </Container>
       </Container>

@@ -12,6 +12,34 @@
 }
 .rounded-corners-border {
   border-radius: 20px;
-  border-style:solid;
+  border-style: solid;
   border-color: rgba(189, 189, 189, 0.5);
+}
+.button1 {
+  all: "unset";
+  font-family: "Helvetica,Arial,sans-serif";
+  display: "inline-block";
+  max-width: "100%";
+  white-space: "nowrap";
+  overflow: "hidden";
+  text-overflow: "ellipsis";
+  background-color: "#0445AF";
+  color: "#fff";
+  font-size: "20px";
+  border-radius: "25px";
+  padding: "0 33px";
+  font-weight: "bold";
+  height: "50px";
+  cursor: "pointer";
+  line-height: "50px";
+  text-align: "center";
+  margin: "0";
+  text-decoration: "none";
+}
+.form1 {
+  margin: 0;
+  padding: 0;
+}
+iframe {
+  border-radius: 0 !important;
 }
