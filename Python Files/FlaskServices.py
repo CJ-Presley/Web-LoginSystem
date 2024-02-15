@@ -122,7 +122,7 @@ def SignupDetails():
             print("Value could not be added to DB", e)
             return jsonify({"success": False, "message": "Internal Server Error"})
         # else:
-        #     return jsonify({"success": False, "message": "Pas6swords Do NOT Match"})
+        #     return jsonify({"success": False, "message": "Passwords Do NOT Match"})
 
 
 @app.route("/menu", methods=["GET"])
@@ -154,6 +154,12 @@ def MenuDetails():
             menuItemsList.append(json)
         return jsonify({"menuItems": menuItemsList})
 
+# Checkout
+    # List of values in "cart"
+    # Send Values to the Front End
+    # Remove items as necessary from "cart"
+    # Save "Cart"
+    # Return "Cart"
 
 if __name__ == "__main__":
     app.run()
