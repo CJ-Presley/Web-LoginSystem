@@ -10,11 +10,13 @@ import {
 import { Button, Col, Form, Row } from "react-bootstrap";
 import axios from "axios";
 import { AccountDetailsContext } from "./accountProvider";
+import { useNavigate } from "react-router-dom";
+import { INDEX_PATH } from "../constants/paths";
 function SignupForm() {
   useEffect(() => {
     document.title = "Bean & Brew | Sign Up";
   });
-  const accountDetailsContext = useContext(AccountDetailsContext)
+  const accountDetailsContext = useContext(AccountDetailsContext);
   const themeContext = useContext(ThemeContext);
   const [showPass, setShowPass] = useState(false);
   const [username, setUsername] = useState("");
@@ -24,6 +26,7 @@ function SignupForm() {
   const [surname, setSurname] = useState("");
   const [forename, setForename] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -58,8 +61,13 @@ function SignupForm() {
       setResponseText(response.data["message"]);
       // console.log(response?.data);
       // if success == true : set password + username -> accountDetails
-      if(response?.data["success"]){
-        accountDetailsContext?.setAccountDetails({username,password})
+      if (response?.data["success"]) {
+        accountDetailsContext?.setAccountDetails({
+          username,
+          password,
+          role: response?.data["role"],
+        });
+        navigate(INDEX_PATH);
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {

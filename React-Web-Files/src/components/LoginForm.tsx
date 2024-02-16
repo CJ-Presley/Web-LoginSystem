@@ -10,6 +10,8 @@ import {
 import { Button, Col, Form, Row } from "react-bootstrap";
 import axios from "axios";
 import { AccountDetailsContext } from "./accountProvider";
+import { INDEX_PATH } from "../constants/paths";
+import { useNavigate } from "react-router-dom";
 function LoginForm() {
   useEffect(() => {
     document.title = "Bean & Brew | Login";
@@ -20,6 +22,7 @@ function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [responseText, setResponseText] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -45,7 +48,9 @@ function LoginForm() {
         accountDetailsContext?.setAccountDetails({
           username,
           password,
+          role: response?.data["role"],
         });
+        navigate(INDEX_PATH);
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {

@@ -4,6 +4,7 @@ import Image from "react-bootstrap/Image";
 import plus from "../assets/icons8-plus-48.png";
 import { Row, Col, Container, Badge } from "react-bootstrap";
 import { Add } from "@carbon/react/icons";
+import { useState } from "react";
 // import { Add } from "@carbon/react/icons";
 
 export interface MenuCardProps {
@@ -14,7 +15,24 @@ export interface MenuCardProps {
   url: string;
 }
 
+interface Item {
+  name: string;
+  quantity: number;
+}
+
 function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
+  const [items, setItems] = useState<Item[]>([]);
+
+  const handleItemClick = (name: string) => {
+    const updatedItems = items.map((item) => {
+      if (item.name === name) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    setItems(updatedItems);
+
+  };
   return (
     <Col className="my-2 mx-3 px-1">
       <Card
@@ -28,7 +46,9 @@ function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
             <Row>
               <h5>
                 {item}
-                <Badge className="mx-2" bg="danger" pill>{type}</Badge>
+                <Badge className="mx-2" bg="danger" pill>
+                  {type}
+                </Badge>
               </h5>
             </Row>
           </Card.Title>
@@ -38,6 +58,7 @@ function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
             <Button
               className="text-light fw-bold px-4 mx-4"
               variant="outline-warning"
+              //onClick=""
             >
               <h6 className="my-1 px-2">Pre-Order</h6>
             </Button>

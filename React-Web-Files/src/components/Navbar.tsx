@@ -49,11 +49,16 @@ function NavBar() {
                 Contacts
               </Nav.Link>
             </Nav>
+            {/* <span className="text-light">
+              Role {String(accountDetailsContext?.accountDetails?.role)}
+            </span> */}
             <Nav>
               <Nav.Link
                 href="/PqRsTuV12345678"
                 className=" fw-bold"
-                disabled={accountDetailsContext?.accountDetails ? false : true}
+                disabled={
+                  accountDetailsContext?.accountDetails?.role ? false : true
+                }
               >
                 Dashboard
               </Nav.Link>
