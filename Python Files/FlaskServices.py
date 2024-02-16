@@ -22,7 +22,7 @@ def LoginDetails():
     logins = {}
     print("Request Recieved")
     with sqlite3.connect(
-        r"Web-LoginSystem/Database Files/Bean&Brew-Account2.db"
+        r"Web-LoginSystem/Database Files/Bean&Brew-Account-Revised.db"
     ) as conn:
         print("Connection Established")
         username = request.json.get("username")
@@ -47,16 +47,18 @@ def LoginDetails():
         try:
             cu = conn.cursor()
             print("Cursor Created")
-            query = """Select * From Customers Where Username = ?"""
+            query = """Select * From Users Where Username = ?"""
             cu.execute(query, (username,))
             results = cu.fetchall()
             print(results)
             for i in results:
                 logins[i[3]] = i[5]
+                role = i[6]
+                print(role)
                 print(logins)
                 print(logins[username])
             if checkpw(password, logins[username]):
-                return jsonify({"success": True, "message": "Login Successful"})
+                return jsonify({"success": True, "message": "Login Successful", "role": role})
             else:
                 return jsonify({"success": False, "message": "Incorrect Login Details"})
         except Exception as e:
@@ -69,7 +71,7 @@ def LoginDetails():
 def SignupDetails():
     print("Request Recieved")
     with sqlite3.connect(
-        r"Web-LoginSystem/Database Files/Bean&Brew-Account2.db"
+        r"Web-LoginSystem/Database Files/Bean&Brew-Account-Revised.db"
     ) as conn:
         print("Connection Established")
         forename = request.json.get("forename")
@@ -93,7 +95,7 @@ def SignupDetails():
                     "message": "Username must be 5 - 16 characters longs and alphanumeric",
                 }
             )
-        count = """Select Count(Username) From Customers Where Username = ?"""
+        count = """Select Count(Username) From Users Where Username = ?"""
         cu = conn.cursor()
         print("Cursor Created")
         cu.execute(count, (username,))
@@ -114,10 +116,11 @@ def SignupDetails():
         salt = gensalt()
         hashedPassword = hashpw(password, salt)
         try:
-            statement = """INSERT INTO Customers(Forename, Surname, Username, DOB, Password) VALUES(?,?,?,?,?)"""
-            cu.execute(statement, (forename, surname, username, dob, hashedPassword))
+            statement = """INSERT INTO Users(Forename, Surname, Username, DOB, Password, RoleID) VALUES(?,?,?,?,?,?)"""
+            CUSTOMER_ROLE = 0
+            cu.execute(statement, (forename, surname, username, dob, hashedPassword, CUSTOMER_ROLE))
             conn.commit()
-            return jsonify({"success": True, "message": "Login Successful"})
+            return jsonify({"success": True, "message": "Login Successful", "role" : 0})
         except Error as e:
             print("Value could not be added to DB", e)
             return jsonify({"success": False, "message": "Internal Server Error"})
@@ -128,7 +131,7 @@ def SignupDetails():
 @app.route("/menu", methods=["GET"])
 def MenuDetails():
     with sqlite3.connect(
-        r"Web-LoginSystem/Database Files/Bean&Brew-Account2.db"
+        r"Web-LoginSystem/Database Files/Bean&Brew-Account-Revised.db"
     ) as conn:
         print("Connection Established")
         query = """SELECT * FROM Menu"""
@@ -153,7 +156,14 @@ def MenuDetails():
             }
             menuItemsList.append(json)
         return jsonify({"menuItems": menuItemsList})
-
+    
+#  #  #  #  #  @app.route("/checkout", methods=["POST"])
+#  #  #  #  #  def CheckoutItems():
+#  #  #  #  #      print("Request Recieved")
+#  #  #  #  #      with sqlite3.connect(r"Web-LoginSystem/Database Files/Bean&Brew-Account-Revised.db") as conn:
+#  #  #  #  #          print("Connection Established")
+#  #  #  #  #          items = request.json.get("item")
+#  #  #  #  #          query = """SELECT """
 # Checkout
     # List of values in "cart"
     # Send Values to the Front End
