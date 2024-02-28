@@ -2,6 +2,14 @@
   border-radius: 20px;
   background-color: #212529;
 }
+.rounded-corners-opaque {
+  border-radius: 20px;
+  opacity: 50%;
+  background-color: #212529;
+}
+.opacity-reset {
+  opacity: 100%;
+}
 .image-responsive {
   width: 100%;
   height: auto;

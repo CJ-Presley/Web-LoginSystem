@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Card, Col, Container, Placeholder } from "react-bootstrap";
 
 function Classes() {
   useEffect(() => {

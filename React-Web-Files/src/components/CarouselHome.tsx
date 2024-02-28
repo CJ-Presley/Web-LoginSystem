@@ -9,15 +9,15 @@ function HomeCar() {
       <Carousel data-bs-theme="light">
         <Carousel.Item>
           <img
-              height="650"
-              className="d-block w-100"
-              src={Img1}
-              alt="First slide"
-            />
+            height="950"
+            className="d-block w-100"
+            src={Img1}
+            alt="First slide"
+          />
         </Carousel.Item>
         <Carousel.Item>
           <img
-            height="650"
+            height="950"
             className="d-block w-100"
             src={Img2}
             alt="Second slide"
@@ -25,7 +25,7 @@ function HomeCar() {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            height="650"
+            height="950"
             className="d-block w-100"
             src={Img3}
             alt="Third slide"

@@ -1,9 +1,15 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Image from "react-bootstrap/Image";
-import plus from "../assets/icons8-plus-48.png";
+import React from "react";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImage,
+  MDBBtn,
+} from "mdb-react-ui-kit";
 import { Row, Col, Container, Badge } from "react-bootstrap";
-import { Add } from "@carbon/react/icons";
 import { useState } from "react";
 // import { Add } from "@carbon/react/icons";
 
@@ -31,42 +37,62 @@ function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
       return item;
     });
     setItems(updatedItems);
-
   };
   return (
     <Col className="my-2 mx-3 px-1">
       <Card
         className="border-rounded border-light"
         bg="dark"
-        style={{ width: "18rem", height: "26rem" }}
+        style={{ width: "19rem", height: "21rem" }}
       >
-        <Card.Img variant="top" src={url} height="300" />
-        <Card.Body className="pb-5">
-          <Card.Title className="text-light fw-bold">
-            <Row>
-              <h5>
-                {item}
-                <Badge className="mx-2" bg="danger" pill>
-                  {type}
-                </Badge>
-              </h5>
-            </Row>
-          </Card.Title>
-          <Card.Text className="mb-5 text-light">{desc}</Card.Text>
-          <Container className="py-2 pb-4 mx-1 px-1 text-white-50 position-absolute bottom-0 fw-bold fs-5">
-            £{price.toFixed(2)}
-            <Button
-              className="text-light fw-bold px-4 mx-4"
-              variant="outline-warning"
-              //onClick=""
-            >
-              <h6 className="my-1 px-2">Pre-Order</h6>
-            </Button>
-          </Container>
-        </Card.Body>
+        <Card.Img variant="top" src={url} height="800" className="bg-image mask"/>
+        <Card.ImgOverlay>
+          <Card.Body className="pb-5">
+            <Card.Title className="text-light fw-bold">
+              <Row>
+                <h5 className="fw-bold">
+                  {item}
+                  <Badge className="mx-2" bg="danger" pill>
+                    {type}
+                  </Badge>
+                </h5>
+              </Row>
+            </Card.Title>
+
+            <Card.Text className="mb-5 text-light">{desc}</Card.Text>
+            <Container className="py-2 pb-4 mx-1 px-1 text-white position-absolute bottom-0 fw-bold fs-5">
+              £{price.toFixed(2)}
+              <Button
+                className="text-light fw-bold px-4 mx-4"
+                variant="outline-warning"
+                //onClick=""
+              >
+                <h6 className="my-1 px-2">Pre-Order</h6>
+              </Button>
+            </Container>
+          </Card.Body>
+        </Card.ImgOverlay>
       </Card>
     </Col>
   );
 }
 
 export default MenuCard;
+
+{/*
+
+export default function App() {
+  return (
+    <MDBCard>
+      <MDBCardImage src='https://mdbootstrap.com/img/new/standard/nature/184.webp' position='top' alt='...' />
+      <MDBCardBody>
+        <MDBCardTitle>Card title</MDBCardTitle>
+        <MDBCardText>
+          Some quick example text to build on the card title and make up the bulk of the card's content.
+        </MDBCardText>
+        <MDBBtn href='#'>Button</MDBBtn>
+      </MDBCardBody>
+    </MDBCard>
+  );
+}
+*/}

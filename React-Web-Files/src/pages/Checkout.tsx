@@ -56,12 +56,16 @@ function Checkout() {
         </Row>
         <Container>
           <Row className="my-4">
-            <Col className="py-2 rounded-corners-border">{itemCards}</Col>
+            <Col className="py-2 rounded-corners-border">
+              {itemCards}
+              <span className="text-secondary my-1 text-center fw-bold">
+                Subtotal: £{totalCost.toFixed(2)}
+              </span>
+            </Col>
             <Col></Col>
           </Row>
         </Container>
       </Container>
-      <p>{totalCost}</p>
     </>
   );
 }
