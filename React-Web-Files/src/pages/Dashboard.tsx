@@ -1,8 +1,10 @@
 import { useContext, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { AccountDetailsContext } from "../components/accountProvider";
 import { useNavigate } from "react-router-dom";
 import { INDEX_PATH } from "../constants/paths";
+import DashCard from "../components/DashboardCard";
+import PlaceholderCard from "../components/placeholderCard";
 
 function Dash() {
   const navigate = useNavigate();
@@ -20,10 +22,49 @@ function Dash() {
 
   const accountDetailsContext = useContext(AccountDetailsContext);
 
-  return <></>;
+  return (
+    <>
+      <Container>
+        <Row>
+          <Col>
+            <PlaceholderCard />
+          </Col>
+          <Col>
+            <PlaceholderCard />
+          </Col>
+          <Col>
+            <DashCard />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <DashCard />
+          </Col>
+          <Col>
+            <DashCard />
+          </Col>
+          <Col>
+            <PlaceholderCard />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={8}>
+            <PlaceholderCard />
+          </Col>
+          <Col>
+            <DashCard />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={8}>
+            <DashCard />
+          </Col>
+          <Col>
+            <PlaceholderCard />
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
 }
 export default Dash;
-
-// accountDetailsContext?.accountDetails?.role ? false : true
-//const navigate = useNavigate();
-// navigate('/dashboard');

@@ -4,11 +4,11 @@ import PlaceholderImg from "../assets/placeholder.png";
 function PlaceholderCard() {
   return (
     <>
-      <Container>
-        <div className="py-3 d-flex justify-content-around">
-          <Card className="bg-dark text-light">
-            <Card.Img variant="top" src={PlaceholderImg} max-height="300" />
-            {/* <Placeholder as={Card.Img} animation="glow" /> */}
+      <div className="py-2">
+        <Card className="bg-dark text-light">
+          <Card.Img variant="top" src={PlaceholderImg} height="225" />
+          {/* <Placeholder as={Card.Img} animation="glow" /> */}
+          <Card.ImgOverlay>
             <Card.Body>
               <Placeholder as={Card.Title} animation="glow">
                 <Placeholder xs={6} />
@@ -18,13 +18,17 @@ function PlaceholderCard() {
                 <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
                 <Placeholder xs={8} />
               </Placeholder>
-              <Placeholder.Button variant="warning" xs={6} animation="wave" />
+              <Placeholder.Button
+                className="pt-4"
+                variant="warning"
+                xs={6}
+                animation="wave"
+              />
             </Card.Body>
-          </Card>
-        </div>
-      </Container>
+          </Card.ImgOverlay>
+        </Card>
+      </div>
     </>
   );
 }
 export default PlaceholderCard;
-

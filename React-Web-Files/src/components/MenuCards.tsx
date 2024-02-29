@@ -8,6 +8,7 @@ import {
   MDBCardText,
   MDBCardImage,
   MDBBtn,
+  MDBCardOverlay,
 } from "mdb-react-ui-kit";
 import { Row, Col, Container, Badge } from "react-bootstrap";
 import { useState } from "react";
@@ -39,16 +40,21 @@ function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
     setItems(updatedItems);
   };
   return (
-    <Col className="my-2 mx-3 px-1">
-      <Card
+    <Col className="pt-1">
+      <MDBCard
         className="border-rounded border-light"
         bg="dark"
-        style={{ width: "19rem", height: "21rem" }}
+        style={{ width: "20rem", height: "20rem" }}
       >
-        <Card.Img variant="top" src={url} height="800" className="bg-image mask"/>
-        <Card.ImgOverlay>
-          <Card.Body className="pb-5">
-            <Card.Title className="text-light fw-bold">
+        <MDBCardImage
+          src={url}
+          height="350"
+          className="darkened-image rounded"
+          position="top"
+        />
+        <MDBCardOverlay>
+          <MDBCardBody className="pb-5 mask">
+            <MDBCardTitle className="text-light fw-bold">
               <Row>
                 <h5 className="fw-bold">
                   {item}
@@ -57,9 +63,9 @@ function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
                   </Badge>
                 </h5>
               </Row>
-            </Card.Title>
+            </MDBCardTitle>
 
-            <Card.Text className="mb-5 text-light">{desc}</Card.Text>
+            <MDBCardText className="mb-5 text-light">{desc}</MDBCardText>
             <Container className="py-2 pb-4 mx-1 px-1 text-white position-absolute bottom-0 fw-bold fs-5">
               £{price.toFixed(2)}
               <Button
@@ -70,21 +76,22 @@ function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
                 <h6 className="my-1 px-2">Pre-Order</h6>
               </Button>
             </Container>
-          </Card.Body>
-        </Card.ImgOverlay>
-      </Card>
+          </MDBCardBody>
+        </MDBCardOverlay>
+      </MDBCard>
     </Col>
   );
 }
 
 export default MenuCard;
 
-{/*
+{
+  /*
 
 export default function App() {
   return (
-    <MDBCard>
-      <MDBCardImage src='https://mdbootstrap.com/img/new/standard/nature/184.webp' position='top' alt='...' />
+    
+      'https://mdbootstrap.com/img/new/standard/nature/184.webp'  alt='...' />
       <MDBCardBody>
         <MDBCardTitle>Card title</MDBCardTitle>
         <MDBCardText>
@@ -95,4 +102,5 @@ export default function App() {
     </MDBCard>
   );
 }
-*/}
+*/
+}

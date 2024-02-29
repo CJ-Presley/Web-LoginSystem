@@ -45,23 +45,22 @@ function Menu() {
   return (
     <>
       <Container>
-        <h1 className="my-3 fw-bold text-center">Menu</h1>
-        <Col className="border-bottom my-3"></Col>
         <div className="mx-5 px-5">
           <Col className="mx-5">
             <Row>
               {menuCards}
-              <Col className="my-2 mx-1 px-4">
+              <Col className="my-2 mx-3 px-1">
                 <Card
                   className="border-rounded border-light"
                   bg="dark"
-                  style={{ width: "18rem", height: "26rem" }}
+                  style={{width: "19rem", height: "21rem"}}
                 >
                   <Card.Img
                     variant="top"
                     src={PlaceholderImg}
-                    max-height="300"
+                    height="800"
                   />
+                  <Card.ImgOverlay>
                   <Card.Body className="pb-5">
                     <Placeholder
                       as={Card.Title}
@@ -79,28 +78,19 @@ function Menu() {
                       <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
                       <Placeholder xs={8} />
                     </Placeholder>
-                    <Container className="py-2 pb-4 mx-1 px-1 text-secondary position-absolute bottom-0 fw-bold fs-5">
+                    <Container className="py-3 pb-4 mx-1 px-1 text-secondary position-absolute bottom-0 fw-bold fs-5">
                       <Placeholder className="m-2" animation="glow">
                         <Placeholder xs={3} />{" "}
                       </Placeholder>
                       <Placeholder.Button variant="warning" xs={6} />
                     </Container>
                   </Card.Body>
+                  </Card.ImgOverlay>
                 </Card>
               </Col>
             </Row>
           </Col>
         </div>
-        <Container>
-          <Row className="py-3">
-            <Col></Col>
-            <Col xs={2}>
-              <Button className="fw-bold text-dark" variant="warning">
-                <ArrowRight className="fw-bold mx-5" />
-              </Button>
-            </Col>
-          </Row>
-        </Container>
       </Container>
     </>
   );

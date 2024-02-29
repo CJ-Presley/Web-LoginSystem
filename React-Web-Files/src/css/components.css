@@ -2,6 +2,10 @@
   border-radius: 20px;
   background-color: #212529;
 }
+.corners-dark {
+  background-color: #212529;
+  filter: opacity(50%);
+}
 .rounded-corners-opaque {
   border-radius: 20px;
   opacity: 50%;
@@ -50,4 +54,7 @@
 }
 iframe {
   border-radius: 0 !important;
+}
+.darkened-image {
+  filter: brightness(50%);
 }
