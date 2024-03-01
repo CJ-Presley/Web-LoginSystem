@@ -7,7 +7,7 @@ function BookingCards() {
     <>
       <Container className="">
         <Row className="py-5">
-          <Col className="mx-1">
+          <Col className="" xs={5}>
             <Card bg="dark">
               <Card.Img variant="top" src={Img2} height="500" width="80" />
               <Card.Body>
@@ -27,7 +27,7 @@ function BookingCards() {
               </Card.Body>
             </Card>
           </Col>
-          <Col className="mx-1">
+          <Col className="" xs={5}>
             <Card bg="dark">
               <Card.Img variant="top" src={Img1} height="500" width="80" />
               <Card.Body>

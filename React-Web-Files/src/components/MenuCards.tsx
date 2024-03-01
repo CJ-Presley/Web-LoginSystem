@@ -20,6 +20,7 @@ export interface MenuCardProps {
   desc: string;
   price: number;
   url: string;
+  handleItemClick: () => void;
 }
 
 interface Item {
@@ -27,18 +28,14 @@ interface Item {
   quantity: number;
 }
 
-function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
-  const [items, setItems] = useState<Item[]>([]);
-
-  const handleItemClick = (name: string) => {
-    const updatedItems = items.map((item) => {
-      if (item.name === name) {
-        return { ...item, quantity: item.quantity + 1 };
-      }
-      return item;
-    });
-    setItems(updatedItems);
-  };
+function MenuCard({
+  item,
+  type,
+  desc,
+  price,
+  url,
+  handleItemClick,
+}: MenuCardProps) {
   return (
     <Col className="pt-1">
       <MDBCard
@@ -71,7 +68,7 @@ function MenuCard({ item, type, desc, price, url }: MenuCardProps) {
               <Button
                 className="text-light fw-bold px-4 mx-4"
                 variant="outline-warning"
-                //onClick=""
+                onClick={handleItemClick}
               >
                 <h6 className="my-1 px-2">Pre-Order</h6>
               </Button>

@@ -16,6 +16,17 @@ import PlaceholderImg from "../assets/placeholder.png";
 
 function Menu() {
   const [menuCards, setMenuCards] = useState([]);
+  const [basket, setBasket] = useState({ Latte: 3, Muffin: 2 });
+
+  const handleItemClick = (item: string) => {
+    if (Object.keys(basket).includes(item)) {
+      const basketItem = item as keyof typeof basket;
+      setBasket({ ...basket, [basketItem]: basket[basketItem] + 1 });
+    } else {
+      setBasket({ ...basket, [item]: 1 });
+    }
+  };
+
   useEffect(() => {
     document.title = "Bean & Brew | Menu";
   });
@@ -34,6 +45,7 @@ function Menu() {
             desc={menuItem.desc}
             price={menuItem.price}
             url={menuItem.url}
+            handleItemClick={() => handleItemClick(menuItem.item)}
           />
         ))
       );
@@ -45,6 +57,7 @@ function Menu() {
   return (
     <>
       <Container>
+        <p>{JSON.stringify(basket)}</p>
         <div className="mx-5 px-5">
           <Col className="mx-5">
             <Row>
@@ -53,38 +66,34 @@ function Menu() {
                 <Card
                   className="border-rounded border-light"
                   bg="dark"
-                  style={{width: "19rem", height: "21rem"}}
+                  style={{ width: "19rem", height: "21rem" }}
                 >
-                  <Card.Img
-                    variant="top"
-                    src={PlaceholderImg}
-                    height="800"
-                  />
+                  <Card.Img variant="top" src={PlaceholderImg} height="800" />
                   <Card.ImgOverlay>
-                  <Card.Body className="pb-5">
-                    <Placeholder
-                      as={Card.Title}
-                      animation="glow"
-                      className="text-light"
-                    >
-                      <Placeholder xs={6} />
-                    </Placeholder>
-                    <Placeholder
-                      as={Card.Text}
-                      animation="glow"
-                      className="text-secondary"
-                    >
-                      <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
-                      <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
-                      <Placeholder xs={8} />
-                    </Placeholder>
-                    <Container className="py-3 pb-4 mx-1 px-1 text-secondary position-absolute bottom-0 fw-bold fs-5">
-                      <Placeholder className="m-2" animation="glow">
-                        <Placeholder xs={3} />{" "}
+                    <Card.Body className="pb-5">
+                      <Placeholder
+                        as={Card.Title}
+                        animation="glow"
+                        className="text-light"
+                      >
+                        <Placeholder xs={6} />
                       </Placeholder>
-                      <Placeholder.Button variant="warning" xs={6} />
-                    </Container>
-                  </Card.Body>
+                      <Placeholder
+                        as={Card.Text}
+                        animation="glow"
+                        className="text-secondary"
+                      >
+                        <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
+                        <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
+                        <Placeholder xs={8} />
+                      </Placeholder>
+                      <Container className="py-3 pb-4 mx-1 px-1 text-secondary position-absolute bottom-0 fw-bold fs-5">
+                        <Placeholder className="m-2" animation="glow">
+                          <Placeholder xs={3} />{" "}
+                        </Placeholder>
+                        <Placeholder.Button variant="warning" xs={6} />
+                      </Container>
+                    </Card.Body>
                   </Card.ImgOverlay>
                 </Card>
               </Col>
