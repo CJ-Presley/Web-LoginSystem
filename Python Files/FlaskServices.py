@@ -66,7 +66,7 @@ def LoginDetails():
             return jsonify({"success": False, "message": "Incorrect Login Details"})
 
 
-# sign up
+# sign up - customer
 @app.route("/signup", methods=["POST"])
 def SignupDetails():
     print("Request Recieved")
@@ -126,6 +126,64 @@ def SignupDetails():
             return jsonify({"success": False, "message": "Internal Server Error"})
         # else:
         #     return jsonify({"success": False, "message": "Passwords Do NOT Match"})
+
+@app.route("/staffsignup", methods=["POST"])
+def StaffSignupDetails():
+    print("Request Recieved")
+    with sqlite3.connect(
+        r"Web-LoginSystem/Database Files/Bean&Brew-Account-Revised.db"
+    ) as conn:
+        print("Connection Established")
+        forename = request.json.get("forename")
+        print(forename)
+        surname = request.json.get("surname")
+        dob = request.json.get("dob")
+        print(dob)
+        if not LF.DateCheck(dob):
+            return jsonify(
+                {
+                    "success": False,
+                    "message": "Value is either not a date or is in the incorrect format (DD/MM/YYYY)",
+                }
+            )
+        username = request.json.get("username")
+        print(username)
+        if LF.UsernameCheck(username):
+            return jsonify(
+                {
+                    "success": False,
+                    "message": "Username must be 5 - 16 characters longs and alphanumeric",
+                }
+            )
+        count = """Select Count(Username) From Users Where Username = ?"""
+        cu = conn.cursor()
+        print("Cursor Created")
+        cu.execute(count, (username,))
+        results = cu.fetchall()
+        for i in results:
+            if int(i[0]) > 1:
+                return jsonify({"success": False, "message": "Username is Taken"})
+        password = request.json.get("password")
+        if LF.PasswordCheck(password):
+            password = password.encode("utf-8")
+        else:
+            return jsonify(
+                {
+                    "success": False,
+                    "message": "Password must be between 5 and 16 characters and have atleast 1 uppercase character, 1 lowercase character and 1 number",
+                }
+            )
+        salt = gensalt()
+        hashedPassword = hashpw(password, salt)
+        try:
+            statement = """INSERT INTO Users(Forename, Surname, Username, DOB, Password, RoleID) VALUES(?,?,?,?,?,?)"""
+            STAFF_DEFAULT_ROLE = 1
+            cu.execute(statement, (forename, surname, username, dob, hashedPassword, STAFF_DEFAULT_ROLE))
+            conn.commit()
+            return jsonify({"success": True, "message": "Staff Account Created", "role" : 0})
+        except Error as e:
+            print("Value could not be added to DB", e)
+            return jsonify({"success": False, "message": "Internal Server Error"})
 
 
 @app.route("/menu", methods=["GET"])
