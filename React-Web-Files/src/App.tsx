@@ -1,7 +1,7 @@
 import { Container, ThemeProvider } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignUpFrom";
+import SignupForm from "./components/SignUpForm";
 import {
   ABOUT_PATH,
   CONTACTS_PATH,
@@ -15,6 +15,7 @@ import {
   CLASS_PATH,
   TABLE_PATH,
   CHECKOUT_PATH,
+  STAFF_SIGNUP_PATH,
 } from "./constants/paths";
 import Home from "./pages/Home";
 import FooterComp from "./components/Footer";
@@ -29,6 +30,7 @@ import Tables from "./pages/Tables";
 import Classes from "./pages/Classes";
 import Checkout from "./pages/Checkout";
 import AccountProvider from "./components/accountProvider";
+import StaffSignupForm from "./components/StaffSignupForm";
 
 export function App() {
   // const themeContext = useContext(ThemeContext);
@@ -41,6 +43,7 @@ export function App() {
           <Route path={SIGNUP_PATH} element={<SignupForm />} />
           <Route path={LOGIN_PATH} element={<LoginForm />} />
           <Route path={CONTACTS_PATH} element={<Contacts />} />
+          <Route path={STAFF_SIGNUP_PATH} element={<StaffSignupForm />} />
           <Route path={ABOUT_PATH} element={<About />} />
           <Route path={DASHBOARD_PATH} element={<Dash />} />
           <Route path={NOT_FOUND_PATH} element={<Error />} />
