@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from "react";
-import MenuCard, { MenuCardProps } from "../components/MenuCards";
+import { useEffect, useState } from "react";
+import MenuCard, { MenuCardDetails } from "../components/MenuCards";
 import axios from "axios";
 import { MENU_URL } from "../constants/APIconstants";
-import {
-  Badge,
-  Button,
-  Card,
-  Col,
-  Container,
-  Placeholder,
-  Row,
-} from "react-bootstrap";
-import { ArrowRight } from "@carbon/react/icons";
+import { Card, Col, Container, Placeholder, Row } from "react-bootstrap";
 import PlaceholderImg from "../assets/placeholder.png";
 
 function Menu() {
-  const [menuCards, setMenuCards] = useState([]);
+  const [menuItems, setMenuItems] = useState([]);
   const [basket, setBasket] = useState({ Latte: 3, Muffin: 2 });
+
+  useEffect(() => {
+    document.title = "Bean & Brew | Menu";
+  });
+  useEffect(() => {
+    const getMenu = async () => {
+      const response = await axios.get(MENU_URL);
+      console.log(response?.data);
+      setMenuItems(response?.data["menuItems"]);
+    };
+    getMenu();
+  }, []);
 
   const handleItemClick = (item: string) => {
     if (Object.keys(basket).includes(item)) {
@@ -27,33 +30,6 @@ function Menu() {
     }
   };
 
-  useEffect(() => {
-    document.title = "Bean & Brew | Menu";
-  });
-  useEffect(() => {
-    const getMenu = async () => {
-      const response = await axios.get(MENU_URL);
-      console.log(response?.data);
-      const menuItems = response?.data["menuItems"];
-      console.log(menuItems);
-      setMenuCards(
-        menuItems.map((menuItem: MenuCardProps) => (
-          <MenuCard
-            key={menuItem.item}
-            item={menuItem.item}
-            type={menuItem.type}
-            desc={menuItem.desc}
-            price={menuItem.price}
-            url={menuItem.url}
-            handleItemClick={() => handleItemClick(menuItem.item)}
-          />
-        ))
-      );
-      console.log(menuCards);
-    };
-    getMenu();
-  }, []);
-
   return (
     <>
       <Container>
@@ -61,7 +37,12 @@ function Menu() {
         <div className="mx-5 px-5">
           <Col className="mx-5">
             <Row>
-              {menuCards}
+              {menuItems.map((menuItem: MenuCardDetails) => (
+                <MenuCard
+                  details={menuItem}
+                  handleItemClick={() => handleItemClick(menuItem.item)}
+                />
+              ))}
               <Col className="my-2 mx-3 px-1">
                 <Card
                   className="border-rounded border-light"
@@ -105,15 +86,3 @@ function Menu() {
   );
 }
 export default Menu;
-
-/*
-  const buttonTags = buttons.map((button) => (
-    <button
-      type="button"
-      key={button}
-      onClick={() => handleButtonClick(button)}
-    >
-      {button}
-    </button>
-  ));
-*/

@@ -1,41 +1,30 @@
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import React from "react";
 import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
   MDBCardImage,
-  MDBBtn,
   MDBCardOverlay,
 } from "mdb-react-ui-kit";
 import { Row, Col, Container, Badge } from "react-bootstrap";
-import { useState } from "react";
-// import { Add } from "@carbon/react/icons";
 
-export interface MenuCardProps {
+export interface MenuCardDetails {
   item: string;
   type: string;
   desc: string;
   price: number;
   url: string;
+}
+
+interface MenuCardProps {
+  details: MenuCardDetails;
   handleItemClick: () => void;
 }
 
-interface Item {
-  name: string;
-  quantity: number;
-}
+function MenuCard({ details, handleItemClick }: MenuCardProps) {
+  const { item, type, desc, price, url } = details;
 
-function MenuCard({
-  item,
-  type,
-  desc,
-  price,
-  url,
-  handleItemClick,
-}: MenuCardProps) {
   return (
     <Col className="pt-1">
       <MDBCard
