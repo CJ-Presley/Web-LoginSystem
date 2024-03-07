@@ -98,7 +98,7 @@ function SignupForm() {
 
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="" controlId="formBasicName">
-                    <Form.Label>Full Name</Form.Label>
+                    <Form.Label className="text-white">Full Name</Form.Label>
                     <Row>
                       <Col>
                         <Form.Control
@@ -121,7 +121,9 @@ function SignupForm() {
                     </Row>
                   </Form.Group>
                   <Form.Group controlId="dob">
-                    <Form.Label>Date of Birth</Form.Label>
+                    <Form.Label className="text-white">
+                      Date of Birth
+                    </Form.Label>
                     <Form.Control
                       type="date"
                       required
@@ -131,7 +133,7 @@ function SignupForm() {
                     />
                   </Form.Group>
                   <Form.Group className="" controlId="formBasicEmail">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label className="text-white">Username</Form.Label>
                     <Form.Control
                       id="username"
                       required
@@ -141,7 +143,7 @@ function SignupForm() {
                     />
                   </Form.Group>
                   <Form.Group className="" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label className="text-white">Password</Form.Label>
                     <Row>
                       <Col>
                         <Form.Control

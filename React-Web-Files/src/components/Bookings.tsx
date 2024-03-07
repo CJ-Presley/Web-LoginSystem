@@ -10,7 +10,7 @@ function BookingCards() {
         <Row className="px-5 mx-5 py-3">
           <Col className="" xs={5}>
             <MDBRipple
-              className="bg-image"
+              className="bg-image hover-zoom"
               rippleTag="div"
               rippleColor="warning"
             >
@@ -26,7 +26,12 @@ function BookingCards() {
                   style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
                 >
                   <div className="d-flex justify-content-center align-items-center h-100">
-                    <p className="text-white mb-0">No</p>
+                    <div className="px-1">
+                      <h1 className="fw-bold text-white">Lesson Bookings</h1>
+                      <p className="text-white mb-0">
+                        Book a cooking class at on of our many sites.
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div className="hover-overlay">
@@ -40,7 +45,7 @@ function BookingCards() {
           </Col>
           <Col className="" xs={5}>
             <MDBRipple
-              className="bg-image"
+              className="bg-image hover-zoom"
               rippleTag="div"
               rippleColor="warning"
             >
@@ -59,7 +64,9 @@ function BookingCards() {
                   <div className="d-flex justify-content-center align-items-center h-100">
                     <div className="px-1">
                       <h1 className="fw-bold text-white">Table Bookings</h1>
-                      <p className="text-white mb-0">Can you see me?</p>
+                      <p className="text-white mb-0">
+                        Reserve a table at one of our locations
+                      </p>
                     </div>
                   </div>
                 </div>

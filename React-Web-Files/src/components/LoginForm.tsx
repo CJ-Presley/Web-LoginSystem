@@ -81,7 +81,7 @@ function LoginForm() {
 
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label className="text-white">Username</Form.Label>
                     <Form.Control
                       id="username"
                       required
@@ -91,7 +91,7 @@ function LoginForm() {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label className="text-white">Password</Form.Label>
                     <Row>
                       <Col>
                         <Form.Control
@@ -123,7 +123,9 @@ function LoginForm() {
                     </Col>
                   </Row>
                   {responseText && (
-                    <p className="text-white text-center">Response: {responseText}</p>
+                    <p className="text-white text-center">
+                      Response: {responseText}
+                    </p>
                   )}
                   <Row>
                     <Col>

@@ -7,33 +7,11 @@ register the account across the webpage as a whole as well as implementing Role 
 Homepage - React TS (Placeholder Content in Place)
 Aboutpage - React TS (No Placeholder Content)
 
+## A
 
+### Demo
 
+git --no-pager log > log.txt
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+^^^
+Change Log
