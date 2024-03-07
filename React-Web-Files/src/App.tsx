@@ -31,6 +31,8 @@ import Classes from "./pages/Classes";
 import Checkout from "./pages/Checkout";
 import AccountProvider from "./components/accountProvider";
 import StaffSignupForm from "./components/StaffSignupForm";
+import "mdb-react-ui-kit/dist/css/mdb.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export function App() {
   // const themeContext = useContext(ThemeContext);
