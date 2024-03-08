@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MenuCard, { MenuCardDetails } from "../components/MenuCards";
+import MenuCard, { MenuCardProps } from "../components/MenuCards";
 import axios from "axios";
 import { MENU_URL } from "../constants/APIconstants";
 import { Card, Col, Container, Placeholder, Row } from "react-bootstrap";
@@ -21,26 +21,20 @@ function Menu() {
     getMenu();
   }, []);
 
-  const handleItemClick = (item: string) => {
-    if (Object.keys(basket).includes(item)) {
-      const basketItem = item as keyof typeof basket;
-      setBasket({ ...basket, [basketItem]: basket[basketItem] + 1 });
-    } else {
-      setBasket({ ...basket, [item]: 1 });
-    }
-  };
-
   return (
     <>
       <Container>
-        <p>{JSON.stringify(basket)}</p>
+        {/* <p>{JSON.stringify(basket)}</p> */}
         <div className="mx-5 px-5">
           <Col className="mx-5">
             <Row>
-              {menuItems.map((menuItem: MenuCardDetails) => (
+              {menuItems.map((menuItem: MenuCardProps) => (
                 <MenuCard
-                  details={menuItem}
-                  handleItemClick={() => handleItemClick(menuItem.item)}
+                  item={menuItem.item}
+                  desc={menuItem.desc}
+                  type={menuItem.type}
+                  price={menuItem.price}
+                  url={menuItem.url}
                 />
               ))}
               <Col className="my-2 mx-3 px-1">

@@ -1,4 +1,4 @@
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Container, Nav, NavDropdown, Badge } from "react-bootstrap";
 import Logo from "../assets/Logo2.png";
 // import { useContext } from "react";
 // import { ThemeContext } from "./ThemeProvider";
@@ -6,11 +6,13 @@ import Logo from "../assets/Logo2.png";
 import { WirelessCheckout } from "@carbon/react/icons";
 import { AccountDetailsContext } from "./accountProvider";
 import { useContext, useState } from "react";
+import { BasketContext } from "./BasketProvider";
 
 function NavBar() {
   // const themeContext = useContext(ThemeContext);
   const accountDetailsContext = useContext(AccountDetailsContext);
   const [buttonState, setButttonState] = useState("");
+  const basketContext = useContext(BasketContext);
 
   return (
     <>
@@ -77,7 +79,10 @@ function NavBar() {
                   Login: {accountDetailsContext?.accountDetails?.username}
                 </NavDropdown.Item>
                 <NavDropdown.Item className="" href="/XyZ9876ABcd3210EfGh">
-                  <WirelessCheckout /> Checkout
+                  <WirelessCheckout /> Checkout{" "}
+                  <Badge pill bg="danger" className="text-white text-center">
+                    {Object.keys(basketContext!.basket).length}
+                  </Badge>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item

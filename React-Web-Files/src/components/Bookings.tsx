@@ -6,8 +6,8 @@ import { MDBRipple } from "mdb-react-ui-kit";
 function BookingCards() {
   return (
     <>
-      <Container className="px-5 mx-5">
-        <Row className="px-5 mx-5 py-3">
+      <Container className="py-2">
+        <Row className="d-flex justify-content-center">
           <Col className="" xs={5}>
             <MDBRipple
               className="bg-image hover-zoom"
@@ -20,7 +20,7 @@ function BookingCards() {
                 className="img-fluid w-100"
                 style={{ height: "40rem", width: "30rem" }}
               />
-              <a href="#!">
+              <a href="/classes">
                 <div
                   className="mask"
                   style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
@@ -56,7 +56,7 @@ function BookingCards() {
                 style={{ height: "40rem", width: "30rem" }}
               />
 
-              <a href="#!">
+              <a href="/reservations">
                 <div
                   className="mask"
                   style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}

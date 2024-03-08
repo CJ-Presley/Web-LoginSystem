@@ -130,7 +130,7 @@ function About() {
             <Image
               src={Founder}
               alt="Founder"
-              className="mx-4 px-2 my-1 responsive-image "
+              className="mx-1 px-5 my-1 img-fluid"
               rounded
               style={{ height: "33rem" }}
             />

@@ -1,16 +1,14 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useContext, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import ItemCards, { ItemCardProps } from "../components/itemsCard";
+import ItemCards, { ItemCardProps } from "../components/ItemsCard";
 import axios from "axios";
-import MenuCard, { MenuCardProps } from "../components/MenuCards";
+import { BasketContext } from "../components/BasketProvider";
 import { MENU_URL } from "../constants/APIconstants";
-
-const BASKET = { Muffin: 1, Chai: 1, Latte: 1, "Choc Hamper": 1 };
+import { render } from "react-dom";
 
 function Checkout() {
-  const [totalCost, setTotalCost] = useState(0);
-  const [itemCards, setItemCards] = useState<ReactNode[]>([]);
-
+  const [menuItems, setMenuItems] = useState([]);
+  const basketContext = useContext(BasketContext);
   useEffect(() => {
     document.title = "Bean & Brew | Checkout";
   });
@@ -22,32 +20,39 @@ function Checkout() {
       console.log(items);
 
       console.log("Menu items: " + items);
-
-      const tempItemCards: ReactNode[] = [];
-      let tempTotalCost = 0;
-
-      items.forEach((item: ItemCardProps) => {
-        if (item.item in BASKET) {
-          console.log(itemCards);
-          console.log(item.item + " is in the basket.");
-          tempItemCards.push(
-            <ItemCards
-              key={item.item}
-              item={item.item}
-              desc={item.desc}
-              price={item.price}
-              url={item.url}
-            />
-          );
-          tempTotalCost +=
-            item.price * BASKET[item.item as keyof typeof BASKET];
-        }
-        setItemCards(tempItemCards);
-        setTotalCost(tempTotalCost);
-      });
+      setMenuItems(items);
     };
     getMenu();
   }, []);
+
+  const renderCost = () => {
+    let tempTotalCost = 0;
+    menuItems.forEach((item: ItemCardProps) => {
+      if (item.item in basketContext!.basket) {
+        tempTotalCost += item.price * basketContext!.basket[item.item];
+      }
+    });
+    return tempTotalCost.toFixed(2);
+  };
+
+  const renderItemCards = () => {
+    const tempItemCards: ReactNode[] = [];
+
+    menuItems.forEach((item: ItemCardProps) => {
+      if (item.item in basketContext!.basket) {
+        tempItemCards.push(
+          <ItemCards
+            key={item.item}
+            item={item.item}
+            quantity={basketContext!.basket[item.item]}
+            price={item.price}
+            url={item.url}
+          />
+        );
+      }
+    });
+    return tempItemCards;
+  };
   return (
     <>
       <Container>
@@ -57,9 +62,9 @@ function Checkout() {
         <Container>
           <Row className="my-4">
             <Col className="py-2 rounded-corners-border">
-              {itemCards}
+              {renderItemCards()}
               <span className="text-secondary my-1 text-center fw-bold">
-                Subtotal: £{totalCost.toFixed(2)}
+                Subtotal: £{renderCost()}
               </span>
             </Col>
             <Col></Col>

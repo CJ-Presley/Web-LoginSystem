@@ -8,8 +8,10 @@ import {
   MDBCardOverlay,
 } from "mdb-react-ui-kit";
 import { Row, Col, Container, Badge } from "react-bootstrap";
+import { BasketContext } from "./BasketProvider";
+import { useContext } from "react";
 
-export interface MenuCardDetails {
+export interface MenuCardProps {
   item: string;
   type: string;
   desc: string;
@@ -17,14 +19,8 @@ export interface MenuCardDetails {
   url: string;
 }
 
-interface MenuCardProps {
-  details: MenuCardDetails;
-  handleItemClick: () => void;
-}
-
-function MenuCard({ details, handleItemClick }: MenuCardProps) {
-  const { item, type, desc, price, url } = details;
-
+function MenuCard({ item, price, desc, type, url }: MenuCardProps) {
+  const basketContext = useContext(BasketContext);
   return (
     <Col className="pt-1">
       <MDBCard
@@ -57,7 +53,7 @@ function MenuCard({ details, handleItemClick }: MenuCardProps) {
               <Button
                 className="text-light fw-bold px-4 mx-4"
                 variant="outline-warning"
-                onClick={handleItemClick}
+                onClick={() => basketContext?.addToBasket(item)}
               >
                 <h6 className="my-1 px-2">Pre-Order</h6>
               </Button>

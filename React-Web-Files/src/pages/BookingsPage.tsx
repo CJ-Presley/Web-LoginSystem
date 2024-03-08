@@ -9,9 +9,10 @@ function Bookings() {
   return (
     <>
       <Container>
-        <h1 className="my-3 px-4 fw-bold text-center">Pre-Orders and Bookings</h1>
-        <BookingCards />
-        
+        <h1 className="my-3 fw-bold text-center">Pre-Orders and Bookings</h1>
+        <div className="">
+          <BookingCards />
+        </div>
       </Container>
     </>
   );

@@ -33,29 +33,32 @@ import AccountProvider from "./components/accountProvider";
 import StaffSignupForm from "./components/StaffSignupForm";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import BasketProvider from "./components/BasketProvider";
 
 export function App() {
   // const themeContext = useContext(ThemeContext);
   return (
     <>
       <AccountProvider>
-        <NavBar />
-        <Routes>
-          <Route path={INDEX_PATH} element={<Home />} />
-          <Route path={SIGNUP_PATH} element={<SignupForm />} />
-          <Route path={LOGIN_PATH} element={<LoginForm />} />
-          <Route path={CONTACTS_PATH} element={<Contacts />} />
-          <Route path={STAFF_SIGNUP_PATH} element={<StaffSignupForm />} />
-          <Route path={ABOUT_PATH} element={<About />} />
-          <Route path={DASHBOARD_PATH} element={<Dash />} />
-          <Route path={NOT_FOUND_PATH} element={<Error />} />
-          <Route path={MENU_PATH} element={<Menu />} />
-          <Route path={BOOKING_PATH} element={<Bookings />} />
-          <Route path={TABLE_PATH} element={<Tables />} />
-          <Route path={CLASS_PATH} element={<Classes />} />
-          <Route path={CHECKOUT_PATH} element={<Checkout />} />
-        </Routes>
-        <FooterComp />
+        <BasketProvider>
+          <NavBar />
+          <Routes>
+            <Route path={INDEX_PATH} element={<Home />} />
+            <Route path={SIGNUP_PATH} element={<SignupForm />} />
+            <Route path={LOGIN_PATH} element={<LoginForm />} />
+            <Route path={CONTACTS_PATH} element={<Contacts />} />
+            <Route path={STAFF_SIGNUP_PATH} element={<StaffSignupForm />} />
+            <Route path={ABOUT_PATH} element={<About />} />
+            <Route path={DASHBOARD_PATH} element={<Dash />} />
+            <Route path={NOT_FOUND_PATH} element={<Error />} />
+            <Route path={MENU_PATH} element={<Menu />} />
+            <Route path={BOOKING_PATH} element={<Bookings />} />
+            <Route path={TABLE_PATH} element={<Tables />} />
+            <Route path={CLASS_PATH} element={<Classes />} />
+            <Route path={CHECKOUT_PATH} element={<Checkout />} />
+          </Routes>
+          <FooterComp />
+        </BasketProvider>
       </AccountProvider>
     </>
   );
